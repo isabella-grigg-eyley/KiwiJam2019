@@ -35,8 +35,9 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-# Fmod shit
+# Fmod stuff
 /Assets/Plugins/FMOD/Resources/FMODStudioCache.asset
 /Assets/Plugins/FMOD/Resources/FMODStudioCache.asset.meta
+/Assets/StreamingAssets/Master.bank
 fmod.log
 fmod_editor.log
