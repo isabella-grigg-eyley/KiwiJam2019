@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c1bbb5cd47c4072a09331de5fe3d75, type: 3}
+  m_Name: CarriageImageDatabase
+  m_EditorClassIdentifier: 
+  CarriageBaseRed: {fileID: 21300000, guid: 1f6157322d59b344fab497e886cf3137, type: 3}
+  CarriageBaseGreen: {fileID: 21300000, guid: ddc5c42c010c4df49bc4c8aed30d22e9, type: 3}
+  CarriageBaseBlue: {fileID: 21300000, guid: 2e6e59345d01c5443bfaea0865444414, type: 3}
+  CarriageBaseWild: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
+  CarriageBaseCopy: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
+  CarriageCoatNone: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
+  CarriageCoatSend: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
+  CarriageCoatShuffle: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58,
+    type: 3}
+  CarriageCoatDoubleDip: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58,
+    type: 3}
+  CarriageCoatSwap: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
+  CarriageAttachedRed: {fileID: 21300000, guid: db75921f7c47a6241b1d491818077006,
+    type: 3}
+  CarriageAttachedGreen: {fileID: 21300000, guid: 1f6a816dfc5f1f145aff9f1e7ab258a9,
+    type: 3}
+  CarriageAttachedBlue: {fileID: 21300000, guid: f080cfa55868b764cb20f5ffb1773460,
+    type: 3}

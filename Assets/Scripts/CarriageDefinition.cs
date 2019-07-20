@@ -25,7 +25,7 @@ public class CarriageDefinition : ScriptableObject
         Swap,
         Copy,
         DoubleDip,
-        Suffle,
+        Shuffle,
     }
 
     public CarriageDefinition()

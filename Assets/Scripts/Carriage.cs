@@ -22,40 +22,16 @@ public class Carriage : MonoBehaviour
 	[HideInInspector]
 	public State CurrentState = State.Selectable;
 
-	// Images
 	[SerializeField]
-	private CarriageImage m_redImage = null;
-	[SerializeField]
-	private CarriageImage m_greenImage = null;
-	[SerializeField]
-	private CarriageImage m_blueImage = null;
+	private CarriageImage m_carriageImage = null;
 
 	public void Init(CarriageDefinition c)
     {
         m_carriageDefinition = c;
 
-		CarriageDefinition.Color color = m_carriageDefinition.GetColor();
-
 		Debug.Log(CarriageDefinition.ToString());
 
-		m_redImage.gameObject.SetActive(false);
-		m_greenImage.gameObject.SetActive(false);
-		m_blueImage.gameObject.SetActive(false);
-
-		switch (color)
-		{
-			case CarriageDefinition.Color.Red:
-				m_redImage.SetState(State.Selectable);
-				m_redImage.gameObject.SetActive(true);
-				break;
-			case CarriageDefinition.Color.Green:
-				m_greenImage.SetState(State.Selectable);
-				m_greenImage.gameObject.SetActive(true);
-				break;
-			case CarriageDefinition.Color.Blue:
-				m_blueImage.SetState(State.Selectable);
-				m_blueImage.gameObject.SetActive(true);
-				break;
-		}
+		m_carriageImage.Init(c);
+		m_carriageImage.SetState(State.Selectable);
     }
 }

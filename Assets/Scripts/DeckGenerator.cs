@@ -99,10 +99,7 @@ public class DeckGeneratorEditor : Editor
 	{
 		DeckGenerator deck = (DeckGenerator) target;
 
-		if (DrawDefaultInspector())
-		{
-
-		}
+		if (DrawDefaultInspector()) {}
 
 		if (GUILayout.Button("Generate"))
 		{

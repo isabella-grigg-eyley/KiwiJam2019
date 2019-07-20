@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameScript : MonoBehaviour
 {
 	[SerializeField]
-	private float m_turnLength = 25;
+	private float m_turnLength = GameConstants.START_TURN_LENGTH;
 
 	[SerializeField]
 	private DeckGenerator m_generator = null;
@@ -32,6 +32,7 @@ public class GameScript : MonoBehaviour
 
 	private void Start()
 	{
+		CarriageImageDatabase db = CarriageImageDatabase.Instance;
 		m_generator.ConstructDeck();
 		InitializeRound();
 	}
