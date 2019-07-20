@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 [CreateAssetMenu (fileName = "DeckGenerator", menuName = "Logic/Deck Generator", order = 1)]
 public class DeckGenerator : ScriptableObject
@@ -9,10 +10,10 @@ public class DeckGenerator : ScriptableObject
     [SerializeField]
     private int m_deckCount = 9;
 
-    [SerializeField]
-    private List<CarriageSettings> m_carriageList = new List<CarriageSettings> ();
+	[SerializeField]
+	private List<CarriagePair> m_carriageList = new List<CarriagePair>();
 
-    [SerializeField]
+	[SerializeField]
     private List<CarriageSettings> m_deck = new List<CarriageSettings> ();
 
     public List<CarriageSettings> GetDeck ()
@@ -20,18 +21,20 @@ public class DeckGenerator : ScriptableObject
         return m_deck;
     }
 
-    //public Dictionary<CarriageSettings, int>
+	//[SerializeField]
+	//public Dictionary<CarriageSettings, int> m_carriageList = new Dictionary<CarriageSettings, int>();
 
-    //public struct CarriagePair
-    //{
-    //    public CarriageSettings Type;
+	[Serializable]
+	public struct CarriagePair
+	{
+		public CarriageSettings Settings;
+		public int Count;
+	}
 
-    //}
-
-    /// <summary>
-    /// Creates the deck
-    /// </summary>
-    public void Generate ()
+	/// <summary>
+	/// Creates the deck
+	/// </summary>
+	public void Generate ()
     {
         m_deck.Clear ();
 
@@ -46,7 +49,8 @@ public class DeckGenerator : ScriptableObject
 
     private CarriageSettings GetRandomCarriage ()
     {
-        return m_carriageList[Random.Range (0, m_carriageList.Count)];
+		return null;
+        //return m_carriageList[Random.Range (0, m_carriageList.Count)];
     }
 
     public void Shuffle()
