@@ -133,10 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79a158d1291b4a12a00f9e82a1310d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_layoutGroup: {fileID: 6468981769869645033}
   m_carriageList:
-  - {fileID: 11400000, guid: e8f4cac593ebf43bc87121c184a03575, type: 2}
-  - {fileID: 11400000, guid: e8f4cac593ebf43bc87121c184a03575, type: 2}
-  - {fileID: 11400000, guid: a70c7eb6f37874dff8c07f07f60e4db8, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6536736880858783932
 GameObject:
   m_ObjectHideFlags: 0

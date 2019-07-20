@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_color: 1
   m_ability: 0
+  m_gameObject: {fileID: 8855438218790494313, guid: 5fa0cff09d1204cd7a36e397cb0e2540,
+    type: 3}
