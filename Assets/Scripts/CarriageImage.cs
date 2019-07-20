@@ -21,16 +21,19 @@ public class CarriageImage : MonoBehaviour
 			case CarriageDefinition.Color.Red:
 				{
 					m_baseImage.sprite = CarriageImageDatabase.Instance.CarriageBaseRed;
+					m_attachedImage.sprite = CarriageImageDatabase.Instance.CarriageAttachedRed;
 				}
 				break;
 			case CarriageDefinition.Color.Green:
 				{
 					m_baseImage.sprite = CarriageImageDatabase.Instance.CarriageBaseGreen;
+					m_attachedImage.sprite = CarriageImageDatabase.Instance.CarriageAttachedGreen;
 				}
 				break;
 			case CarriageDefinition.Color.Blue:
 				{
 					m_baseImage.sprite = CarriageImageDatabase.Instance.CarriageBaseBlue;
+					m_attachedImage.sprite = CarriageImageDatabase.Instance.CarriageAttachedBlue;
 				}
 				break;
 			case CarriageDefinition.Color.Wild:
@@ -80,7 +83,7 @@ public class CarriageImage : MonoBehaviour
 		}
 	}
 
-	public void SetState(Carriage.State state)
+	public void SetVisibleState(Carriage.State state)
 	{
 		switch (state)
 		{

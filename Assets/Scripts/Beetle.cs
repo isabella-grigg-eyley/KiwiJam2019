@@ -64,9 +64,12 @@ public class Beetle : MonoBehaviour
         Debug.Log(string.Format("Beetle {0} added carriage {1}", this.name, carriage));
         m_carriageList.Add(carriage);
 
-		carriage.CurrentState = Carriage.State.Attached;
+        Carriage newCarriage = GameObject.Instantiate(carriage, Vector3.zero,Quaternion.identity);
+        newCarriage.transform.SetParent(m_layoutGroup.transform, false);
+        newCarriage.Init(carriage.CarriageDefinition, Carriage.State.Attached);
 
-        carriage.transform.SetParent(m_layoutGroup.transform, false);
+        // Disable the one we chose
+        carriage.gameObject.SetActive(false);
     }
 
     public void ClearCarriage()

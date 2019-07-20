@@ -30,6 +30,32 @@ public class GameScript : MonoBehaviour
 
 	private bool m_gameplayActive = false;
 
+	public delegate void SelectCarriageDelegate(Carriage c);
+	public static event SelectCarriageDelegate OnSelectCarriage;
+
+	public static void SelectCarriage(Carriage c)
+	{
+		OnSelectCarriage(c);
+	}
+
+	private void OnEnable()
+	{
+		OnSelectCarriage += OnCarriageSelected;
+	}
+
+	private void OnCarriageSelected(Carriage c)
+	{
+		if (m_player1Turn)
+		{
+			m_player1.AddCarriage(c);
+		}
+		else{
+			m_player2.AddCarriage(c);
+		}
+
+		NextTurn();
+	}
+
 	private void Start()
 	{
 		CarriageImageDatabase db = CarriageImageDatabase.Instance;
@@ -40,7 +66,7 @@ public class GameScript : MonoBehaviour
 	private void Update()
 	{
 		if (m_currentTurnTimer <= 0)
-		m_currentTurnTimer -= Time.deltaTime;
+			m_currentTurnTimer -= Time.deltaTime;
 	}
 
 	private void InitializeRound()
