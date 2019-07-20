@@ -5,14 +5,14 @@ using UnityEditor;
 using System;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu (fileName = "DeckGenerator", menuName = "Logic/Deck Generator", order = 1)]
+[CreateAssetMenu(fileName = "DeckGenerator", menuName = "Logic/Deck Generator", order = 1)]
 public class DeckGenerator : ScriptableObject
 {
     [SerializeField]
     private int m_handSize = 9;
 
-	[SerializeField]
-	private List<CarriagePair> m_carriageList = new List<CarriagePair>();
+    [SerializeField]
+    private List<CarriagePair> m_carriageList = new List<CarriagePair>();
 
 	[SerializeField, FormerlySerializedAs("m_deck")]
     private List<CarriageSettings> m_hand = new List<CarriageSettings> ();
@@ -96,7 +96,7 @@ public class DeckGeneratorEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        DeckGenerator deck = (DeckGenerator)target;
+        DeckGenerator deck = (DeckGenerator) target;
 
         if (DrawDefaultInspector())
         {

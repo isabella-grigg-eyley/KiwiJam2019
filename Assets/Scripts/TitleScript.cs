@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class TitleScript : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-	
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-		{
-			SceneManager.LoadScene("Game", LoadSceneMode.Single);
+	void Start ()
+	{
 
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Test01");
+	}
+
+	void Update ()
+	{
+		if (Input.GetKeyDown (KeyCode.Return))
+		{
+			SceneManager.LoadScene ("Game", LoadSceneMode.Single);
+
+			FMODUnity.RuntimeManager.PlayOneShot ("event:/Test01");
 		}
-    }
+	}
 }
