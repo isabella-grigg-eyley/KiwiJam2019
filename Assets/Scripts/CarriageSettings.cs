@@ -21,11 +21,14 @@ public class CarriageSettings : ScriptableObject
 	}
 
     [System.Serializable]
-    public enum Ability
+	public enum Ability
 	{
 		None,
+		Send,
 		Swap,
-		Give,
+		Copy,
+		DoubleDip,
+		Suffle,
 	}
 
 	[SerializeField]
