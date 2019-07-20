@@ -6,31 +6,41 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts
+[CreateAssetMenu(fileName = "CarriageSettings", menuName = "Logic/Carriage Settings", order = 1)]
+[System.Serializable]
+public class CarriageSettings : ScriptableObject
 {
-	[CreateAssetMenu]
-	class CarriageSettings : ScriptableObject
+    [System.Serializable]
+    public enum Color
 	{
-		public enum Color
-		{
-			Red,
-			Green,
-			Blue,
-			Wild,
-			Choose,
-		}
+		Red,
+		Green,
+		Blue,
+		Wild,
+		Choose,
+	}
 
-		public enum Ability
-		{
-			None,
-			Swap,
-			Give,
-		}
+    [System.Serializable]
+    public enum Ability
+	{
+		None,
+		Swap,
+		Give,
+	}
 
-		[SerializeField]
-		private Color m_color = Color.Red;
+	[SerializeField]
+	private Color m_color = Color.Red;
 
-		[SerializeField]
-		private Ability m_ability = Ability.None;
+	public Color GetColor()
+	{
+		return m_color;
+	}
+
+	[SerializeField]
+	private Ability m_ability = Ability.None;
+
+	public Ability GetAbility()
+	{
+		return m_ability;
 	}
 }
