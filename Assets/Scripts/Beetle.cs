@@ -61,8 +61,14 @@ public class Beetle : MonoBehaviour
         m_carriageList.Clear();
     }
 
+    [ContextMenu("Get Dominant Color")]
     public Color GetDominantColor()
     {
+        if (CarriageCount < GameConstants.MAX_HAND_SIZE)
+        {
+            Debug.Log(string.Format("Beetle {0} did not return a dominant color — Hand size is not complete", this.name));
+        }
+
         Dictionary<Color, int> m_colorsFound = new Dictionary<Color, int>();
 
         foreach (CarriageDefinition cs in m_carriageList)
