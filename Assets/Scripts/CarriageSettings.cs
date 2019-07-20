@@ -23,8 +23,11 @@ namespace Assets.Scripts
 		public enum Ability
 		{
 			None,
+			Send,
 			Swap,
-			Give,
+			Copy,
+			DoubleDip,
+			Suffle,
 		}
 
 		[SerializeField]
