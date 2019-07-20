@@ -3,26 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu (fileName = "DeckGenerator", menuName = "Logic/Deck Generator", order = 1)]
 public class DeckGenerator : ScriptableObject
 {
     [SerializeField]
-    private int m_deckCount = 9;
+    private int m_handSize = 9;
 
 	[SerializeField]
 	private List<CarriagePair> m_carriageList = new List<CarriagePair>();
 
-	[SerializeField]
-    private List<CarriageSettings> m_deck = new List<CarriageSettings> ();
+	[SerializeField, FormerlySerializedAs("m_deck")]
+    private List<CarriageSettings> m_hand = new List<CarriageSettings> ();
 
-    public List<CarriageSettings> GetDeck ()
+    public List<CarriageSettings> GetHand ()
     {
-        return m_deck;
+        return m_hand;
     }
-
-	//[SerializeField]
-	//public Dictionary<CarriageSettings, int> m_carriageList = new Dictionary<CarriageSettings, int>();
 
 	[Serializable]
 	public struct CarriagePair
@@ -31,31 +29,65 @@ public class DeckGenerator : ScriptableObject
 		public int Count;
 	}
 
-	/// <summary>
-	/// Creates the deck
-	/// </summary>
-	public void Generate ()
-    {
-        m_deck.Clear ();
+	private List<CarriageSettings> m_deck = null;
 
-        for (int i = 0; i < m_deckCount; ++i)
+	public void ConstructPool()
+	{
+		m_deck = new List<CarriageSettings>();
+
+		for (int i = 0; i < m_carriageList.Count; i++)
+		{
+			CarriagePair pair = m_carriageList[i];
+			for (int j = 0; j < pair.Count; j++)
+			{
+				m_deck.Add(pair.Settings);
+			}
+		}
+	}
+
+	/// <summary>
+	/// Creates the hand
+	/// </summary>
+	public void Generate(List<CarriageSettings> exclude = null)
+    {
+        m_hand.Clear();
+
+		List<CarriageSettings> filteredDeck = new List<CarriageSettings>();
+		if (exclude == null)
+		{
+			filteredDeck = m_deck;
+		}
+		else
+		{
+			for (int i = 0; i < m_deck.Count; i++)
+			{
+				CarriageSettings c = m_deck[i];
+				if (!exclude.Contains(c))
+				{
+					filteredDeck.Add(c);
+				}
+			}
+		}
+
+        for (int i = 0; i < m_handSize; ++i)
         {
-            CarriageSettings c = GetRandomCarriage ();
-            m_deck.Add (c);
+            CarriageSettings c = GetRandomCarriage(filteredDeck);
+            m_hand.Add(c);
         }
 
         Shuffle();
     }
 
-    private CarriageSettings GetRandomCarriage ()
+    private CarriageSettings GetRandomCarriage(List<CarriageSettings> deck)
     {
-		return null;
-        //return m_carriageList[Random.Range (0, m_carriageList.Count)];
+		int index = UnityEngine.Random.Range(0, deck.Count);
+
+		return deck[index];
     }
 
     public void Shuffle()
     {
-        m_deck.Shuffle();
+        m_hand.Shuffle();
     }
 }
 
@@ -73,6 +105,7 @@ public class DeckGeneratorEditor : Editor
 
         if (GUILayout.Button("Generate"))
         {
+			deck.ConstructPool();
             deck.Generate();
         }
 
