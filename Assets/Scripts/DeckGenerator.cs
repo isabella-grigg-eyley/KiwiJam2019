@@ -31,7 +31,7 @@ public class DeckGenerator : ScriptableObject
 
 	private List<CarriageDefinition> m_deck = null;
 
-	public void ConstructPool()
+	public void ConstructDeck()
 	{
 		m_deck = new List<CarriageDefinition>();
 
@@ -81,7 +81,8 @@ public class DeckGenerator : ScriptableObject
 	private CarriageDefinition GetRandomCarriage(List<CarriageDefinition> deck)
 	{
 		int index = UnityEngine.Random.Range(0, deck.Count);
-
+		CarriageDefinition def = deck[index];
+		m_deck.Remove(def);
 		return deck[index];
 	}
 
@@ -105,7 +106,7 @@ public class DeckGeneratorEditor : Editor
 
 		if (GUILayout.Button("Generate"))
 		{
-			deck.ConstructPool();
+			deck.ConstructDeck();
 			deck.Generate();
 		}
 
