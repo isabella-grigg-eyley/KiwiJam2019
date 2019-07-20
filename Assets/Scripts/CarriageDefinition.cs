@@ -65,6 +65,6 @@ public class CarriageDefinition : ScriptableObject
 
     public override string ToString()
     {
-        return string.Format("Carriage: {0} - {1}", m_color.ToString(), m_ability.ToString());
+        return string.Format("Carriage (Colour: {0} - Ability: {1})", m_color.ToString(), m_ability.ToString());
     }
 }

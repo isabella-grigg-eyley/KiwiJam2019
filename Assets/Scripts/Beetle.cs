@@ -32,13 +32,18 @@ public class Beetle : MonoBehaviour
         get { return m_carriageList.Count; }
     }
 
-    public void Reset()
+    private void Start()
     {
-        Health = GameConstants.MAX_BEETLE_HP;
-        ClearCarriage();
+        Init();
+        Reset();
     }
 
     public void Init()
+    {
+        Health = GameConstants.MAX_BEETLE_HP;
+    }
+
+    public void Reset()
     {
         ClearCarriage();
     }
@@ -48,7 +53,7 @@ public class Beetle : MonoBehaviour
         Health--;
     }
 
-    public void AddCarriage(CarriageDefinition carriage)
+    public void AddCarriage(CarriageDefinition carriageDefinition)
     {
         if (CarriageCount >= GameConstants.MAX_HAND_SIZE)
         {
@@ -56,13 +61,18 @@ public class Beetle : MonoBehaviour
             return;
         }
 
-        Debug.Log(string.Format("Beetle {0} added carriage {1}", this.name, carriage));
-        m_carriageList.Add(carriage);
+        Debug.Log(string.Format("Beetle {0} added carriage {1}", this.name, carriageDefinition));
+        m_carriageList.Add(carriageDefinition);
 
-        if (!carriage.GetGameObject())
+        if (!carriageDefinition.GetGameObject())
             return;
-        GameObject carriageContainer = Instantiate(carriage.GetGameObject(), Vector3.zero, Quaternion.identity);
-        carriageContainer.transform.SetParent(m_layoutGroup.transform, false);
+
+        GameObject carriageContainerObject = Instantiate(carriageDefinition.GetGameObject(), Vector3.zero, Quaternion.identity);
+
+        CarriageContainer cc = carriageContainerObject.AddComponent<CarriageContainer>();
+        cc.Init(carriageDefinition);
+
+        carriageContainerObject.transform.SetParent(m_layoutGroup.transform, false);
     }
 
     public void ClearCarriage()
