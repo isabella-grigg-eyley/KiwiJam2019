@@ -25,7 +25,7 @@ public class Beetle : MonoBehaviour
     }
 
     [SerializeField]
-    private List<CarriageDefinition> m_carriageList = new List<CarriageDefinition>();
+    private List<Carriage> m_carriageList = new List<Carriage>();
 
     public int CarriageCount
     {
@@ -53,7 +53,7 @@ public class Beetle : MonoBehaviour
         Health--;
     }
 
-    public void AddCarriage(CarriageDefinition carriageDefinition)
+    public void AddCarriage(Carriage carriage)
     {
         if (CarriageCount >= GameConstants.MAX_HAND_SIZE)
         {
@@ -61,23 +61,17 @@ public class Beetle : MonoBehaviour
             return;
         }
 
-        Debug.Log(string.Format("Beetle {0} added carriage {1}", this.name, carriageDefinition));
-        m_carriageList.Add(carriageDefinition);
+        Debug.Log(string.Format("Beetle {0} added carriage {1}", this.name, carriage));
+        m_carriageList.Add(carriage);
 
-        if (!carriageDefinition.GetGameObject())
-            return;
+		carriage.CurrentState = Carriage.State.Attached;
 
-        GameObject carriageContainerObject = Instantiate(carriageDefinition.GetGameObject(), Vector3.zero, Quaternion.identity);
-
-        CarriageContainer cc = carriageContainerObject.AddComponent<CarriageContainer>();
-        cc.Init(carriageDefinition);
-
-        carriageContainerObject.transform.SetParent(m_layoutGroup.transform, false);
+        carriage.transform.SetParent(m_layoutGroup.transform, false);
     }
 
     public void ClearCarriage()
     {
-        Debug.Log(string.Format("Beetle {0} cleared its carriage", this.name));
+        Debug.Log(string.Format("Beetle {0} cleared its carriages", this.name));
         m_carriageList.Clear();
 
         // Delete the children from the layout group
@@ -97,8 +91,10 @@ public class Beetle : MonoBehaviour
 
         Dictionary<Color, int> m_colorsFound = new Dictionary<Color, int>();
 
-        foreach (CarriageDefinition cs in m_carriageList)
+        foreach (Carriage carriage in m_carriageList)
         {
+			CarriageDefinition cs = carriage.CarriageDefinition;
+
             Color col = cs.GetColor();
 
             // Dictionary does not contain colour value
@@ -126,82 +122,82 @@ public class Beetle : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    #region TEST
-    [ContextMenu("Create Test Carriage (RRB)")]
-    public void TestCarriageRRB()
-    {
-        Reset();
-        AddCarriage(new CarriageDefinition(
-            Color.Red,
-            CarriageDefinition.Ability.None
-        ));
+    //#region TEST
+    //[ContextMenu("Create Test Carriage (RRB)")]
+    //public void TestCarriageRRB()
+    //{
+    //    Reset();
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Red,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        AddCarriage(new CarriageDefinition(
-            Color.Red,
-            CarriageDefinition.Ability.None
-        ));
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Red,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        AddCarriage(new CarriageDefinition(
-            Color.Blue,
-            CarriageDefinition.Ability.None
-        ));
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Blue,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        Color dominant = GetDominantColor();
-        Debug.Assert(dominant == Color.Red, "Dominant color for RRB is not red");
-    }
+    //    Color dominant = GetDominantColor();
+    //    Debug.Assert(dominant == Color.Red, "Dominant color for RRB is not red");
+    //}
 
-    [ContextMenu("Create Test Carriage (RGB)")]
-    public void TestCarriageRGB()
-    {
-        Reset();
-        AddCarriage(new CarriageDefinition(
-            Color.Red,
-            CarriageDefinition.Ability.None
-        ));
+    //[ContextMenu("Create Test Carriage (RGB)")]
+    //public void TestCarriageRGB()
+    //{
+    //    Reset();
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Red,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        AddCarriage(new CarriageDefinition(
-            Color.Green,
-            CarriageDefinition.Ability.None
-        ));
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Green,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        AddCarriage(new CarriageDefinition(
-            Color.Blue,
-            CarriageDefinition.Ability.None
-        ));
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Blue,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        Color dominant = GetDominantColor();
-        Debug.Assert(dominant == Color.None, "Dominant color for RGB is not none");
-    }
+    //    Color dominant = GetDominantColor();
+    //    Debug.Assert(dominant == Color.None, "Dominant color for RGB is not none");
+    //}
 
-    [ContextMenu("Create Test Carriage (RGGR)")]
-    public void TestCarriageRGGR()
-    {
-        Reset();
-        AddCarriage(new CarriageDefinition(
-            Color.Red,
-            CarriageDefinition.Ability.None
-        ));
+    //[ContextMenu("Create Test Carriage (RGGR)")]
+    //public void TestCarriageRGGR()
+    //{
+    //    Reset();
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Red,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        AddCarriage(new CarriageDefinition(
-            Color.Green,
-            CarriageDefinition.Ability.None
-        ));
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Green,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        AddCarriage(new CarriageDefinition(
-            Color.Green,
-            CarriageDefinition.Ability.None
-        ));
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Green,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        AddCarriage(new CarriageDefinition(
-            Color.Red,
-            CarriageDefinition.Ability.None
-        ));
+    //    AddCarriage(new CarriageDefinition(
+    //        Color.Red,
+    //        CarriageDefinition.Ability.None
+    //    ));
 
-        Debug.Assert(CarriageCount == GameConstants.MAX_HAND_SIZE);
+    //    Debug.Assert(CarriageCount == GameConstants.MAX_HAND_SIZE);
 
-        Color dominant = GetDominantColor();
-        Debug.Assert(dominant == Color.Green, "Dominant color for RGGB is not green");
-    }
-    #endregion TEST
+    //    Color dominant = GetDominantColor();
+    //    Debug.Assert(dominant == Color.Green, "Dominant color for RGGB is not green");
+    //}
+    //#endregion TEST
 #endif
 }

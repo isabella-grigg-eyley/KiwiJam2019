@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "CarriageSettings", menuName = "Logic/Carriage Settings", order = 1)]
 [System.Serializable]
@@ -45,9 +46,6 @@ public class CarriageDefinition : ScriptableObject
     [SerializeField]
     private Ability m_ability = Ability.None;
 
-    [SerializeField]
-    private GameObject m_gameObject = null;
-
     public Color GetColor()
     {
         return m_color;
@@ -56,11 +54,6 @@ public class CarriageDefinition : ScriptableObject
     public Ability GetAbility()
     {
         return m_ability;
-    }
-
-    public GameObject GetGameObject()
-    {
-        return m_gameObject;
     }
 
     public override string ToString()
