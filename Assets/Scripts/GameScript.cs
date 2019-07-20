@@ -51,10 +51,12 @@ public class GameScript : MonoBehaviour
 		for (int i = 0; i < m_currentHand.Count; i++)
 		{
 			Carriage carriage = Instantiate<Carriage>(m_carriagePrefab, m_carriageContainer);
-			carriage.Init(m_currentHand[0]);
+			carriage.Init(m_currentHand[i]);
 
 			m_currentAvailableCarriages.Add(carriage);
 		}
+
+		m_carriageContainer.GetComponent<CarriageMenu>().Init();
 
 		m_gameplayActive = true;
 		TurnStart();
