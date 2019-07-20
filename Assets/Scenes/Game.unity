@@ -2026,5 +2026,60 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2127860167445433457, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_playerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237645676266220408, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_ChildForceExpandWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237645676266220408, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_ChildScaleWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237645676266220408, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_ChildScaleHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251131213429931659, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_ChildAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251131213429931659, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_ChildForceExpandWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251131213429931659, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_ChildScaleWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251131213429931659, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251131213429931659, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_ChildScaleHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809275230735594811, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809275230735594811, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34e3848ae3bf7440d8ac677a47cdb4f7, type: 3}

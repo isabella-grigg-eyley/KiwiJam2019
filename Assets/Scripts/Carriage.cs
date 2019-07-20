@@ -43,6 +43,11 @@ public class Carriage : MonoBehaviour
 			m_button.onClick.AddListener(() => Select(this));
 	}
 
+	public void Flip(bool player1)
+	{
+		m_carriageImage.SetPosition(player1);
+	}
+
 	private void Select(Carriage c)
 	{
 		Debug.Log(string.Format("SELECTED {0}", c));

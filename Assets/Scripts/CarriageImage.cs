@@ -103,4 +103,11 @@ public class CarriageImage : MonoBehaviour
 				break;
 		}
 	}
+
+	public void SetPosition(bool left)
+	{
+		Vector3 scale = m_attachedImage.transform.localScale;
+		scale.x = left ? -1 : 1;
+		m_attachedImage.transform.localScale = scale;
+	}
 }

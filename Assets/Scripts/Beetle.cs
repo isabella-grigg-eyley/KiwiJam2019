@@ -7,6 +7,10 @@ using Color = CarriageDefinition.Color;
 public class Beetle : MonoBehaviour
 {
     [SerializeField]
+    [Range(1, 2)]
+    private int m_playerNumber = 1;
+
+    [SerializeField]
     private HorizontalLayoutGroup m_layoutGroup = null;
 
     private int m_health = GameConstants.MAX_HAND_SIZE;
@@ -30,6 +34,13 @@ public class Beetle : MonoBehaviour
     public int CarriageCount
     {
         get { return m_carriageList.Count; }
+    }
+
+    public Carriage GetLastCarriage()
+    {
+        if (CarriageCount == 0)
+            return null;
+        return m_carriageList[CarriageCount - 1];
     }
 
     private void Start()
@@ -64,9 +75,11 @@ public class Beetle : MonoBehaviour
         Debug.Log(string.Format("Beetle {0} added carriage {1}", this.name, carriage));
         m_carriageList.Add(carriage);
 
-        Carriage newCarriage = GameObject.Instantiate(carriage, Vector3.zero,Quaternion.identity);
+        Carriage newCarriage = GameObject.Instantiate(carriage, Vector3.zero, Quaternion.identity);
         newCarriage.transform.SetParent(m_layoutGroup.transform, false);
         newCarriage.Init(carriage.CarriageDefinition, Carriage.State.Attached);
+
+        newCarriage.Flip(m_playerNumber == 1);
 
         // Disable the one we chose
         carriage.gameObject.SetActive(false);
@@ -96,7 +109,7 @@ public class Beetle : MonoBehaviour
 
         foreach (Carriage carriage in m_carriageList)
         {
-			CarriageDefinition cs = carriage.CarriageDefinition;
+            CarriageDefinition cs = carriage.CarriageDefinition;
 
             Color col = cs.GetColor();
 
