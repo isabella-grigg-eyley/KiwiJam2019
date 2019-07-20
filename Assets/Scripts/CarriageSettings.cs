@@ -17,7 +17,7 @@ public class CarriageSettings : ScriptableObject
 		Green,
 		Blue,
 		Wild,
-		Choose,
+		None,
 	}
 
     [System.Serializable]
