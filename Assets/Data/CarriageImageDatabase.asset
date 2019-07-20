@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c1bbb5cd47c4072a09331de5fe3d75, type: 3}
   m_Name: CarriageImageDatabase
   m_EditorClassIdentifier: 
-  CarriageBaseRed: {fileID: 21300000, guid: 1f6157322d59b344fab497e886cf3137, type: 3}
-  CarriageBaseGreen: {fileID: 21300000, guid: ddc5c42c010c4df49bc4c8aed30d22e9, type: 3}
-  CarriageBaseBlue: {fileID: 21300000, guid: 2e6e59345d01c5443bfaea0865444414, type: 3}
-  CarriageBaseWild: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
-  CarriageBaseCopy: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
-  CarriageCoatNone: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
-  CarriageCoatSend: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
-  CarriageCoatShuffle: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58,
+  CarriageBaseRed: {fileID: 21300000, guid: b85d0ff1cb7994d248e581bf98ae9df3, type: 3}
+  CarriageBaseGreen: {fileID: 21300000, guid: 132a9b54b2dd649038b5e0a2abf3945b, type: 3}
+  CarriageBaseBlue: {fileID: 21300000, guid: 4f6060e51f4af43acb4c76bcdf27da25, type: 3}
+  CarriageBaseWild: {fileID: 21300000, guid: e46d3f31ca56a434aa9ceb68aabbf213, type: 3}
+  CarriageBaseCopy: {fileID: 21300000, guid: 22d329ffe85d141c0a5e4ff510cf5b0b, type: 3}
+  CarriageCoatNone: {fileID: 21300000, guid: 7a711ace4df0c4a1cbe415ab5bb79370, type: 3}
+  CarriageCoatSend: {fileID: 21300000, guid: d2e234159189e4592871f77fc5e6c6f5, type: 3}
+  CarriageCoatShuffle: {fileID: 21300000, guid: 1a9daf1be82324200bfa5d600b024024,
     type: 3}
-  CarriageCoatDoubleDip: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58,
+  CarriageCoatDoubleDip: {fileID: 21300000, guid: ac65b7eb9c73b4e89912f093d03b26d5,
     type: 3}
-  CarriageCoatSwap: {fileID: 21300000, guid: fda7fca5b6f9548cd862c2f82d180e58, type: 3}
+  CarriageCoatSwap: {fileID: 21300000, guid: 8d45617bb5fbf40308979350d4d3cc9d, type: 3}
   CarriageAttachedRed: {fileID: 21300000, guid: db75921f7c47a6241b1d491818077006,
     type: 3}
   CarriageAttachedGreen: {fileID: 21300000, guid: 1f6a816dfc5f1f145aff9f1e7ab258a9,
