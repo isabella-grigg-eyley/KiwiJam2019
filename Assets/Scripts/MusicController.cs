@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-    // Allows music Control to be accessed everywhere using "MusicControl.MC".
+    // Allows music Control to be accessed everywhere using "MusicController.MC".
     public static MusicController MC;
     
     // The music event file can be changed easily within the editor.
     [FMODUnity.EventRef]
     public string music;
-    
+
+    [Header("FMOD Settings")]    
+    [SerializeField] private string MusicParameterName;
 
     FMOD.Studio.EventInstance musicEV;
 
@@ -36,24 +38,25 @@ public class MusicController : MonoBehaviour
     // GameStartedMusic triggers the transition from menu to the game.
     public void GameStartedMusic()
     {
-        musicEV.setParameterByName("MusicParam", 1f);  
+        musicEV.setParameterByName(MusicParameterName, 1f);  
+        Debug.Log("Param1");  
     }
 
-    // MusicLevel1 adds some bass 
+    // MusicLevel1 adds some bass
     public void MusicLevel1()
     {
-        musicEV.setParameterByName("MusicParam", 2f);
+        musicEV.setParameterByName(MusicParameterName, 2f);
     }
    
     // MusicLevel2 adds train drums and more melody
     public void MusicLevel2()
     {
-        musicEV.setParameterByName("MusicParam", 3f);
+        musicEV.setParameterByName(MusicParameterName, 3f);
     }
 
     // GameEndedMusic transitions back to menu music
     public void GameEndedMusic()
     {
-        musicEV.setParameterByName("MusicParam", 0f);
+        musicEV.setParameterByName(MusicParameterName, 0f);
     }
 }

@@ -14,9 +14,7 @@ public class TitleScript : MonoBehaviour
 	{
 		if (Input.GetKeyDown (KeyCode.Return))
 		{
-			SceneManager.LoadScene ("Game", LoadSceneMode.Single);
-
-			FMODUnity.RuntimeManager.PlayOneShot ("event:/Test01");
+			SceneManager.LoadScene ("Game", LoadSceneMode.Single);			
 		}
 	}
 }
