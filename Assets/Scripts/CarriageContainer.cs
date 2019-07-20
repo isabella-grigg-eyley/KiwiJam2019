@@ -5,25 +5,32 @@ using UnityEngine.UI;
 
 public class CarriageContainer : MonoBehaviour
 {
-    [SerializeField]
+    [System.Serializable]
+    public enum State
+    {
+        Idle,
+        Selectable
+    }
+
+    private Button m_button = null;
+
+    private CarriageDefinition m_carriageDefinition = null;
+
     private Image m_image = null;
 
-    [SerializeField]
-    private CarriageDefinition m_carriageDefinition = null;
+    public Button Button
+    {
+        get { return m_button; }
+    }
 
     void Awake()
     {
-        if (!m_image)
-            m_image = GetComponent<Image>();
+        m_image = GetComponent<Image>();
+        m_button = GetComponent<Button>();
     }
 
     public void Init(CarriageDefinition c)
     {
         m_carriageDefinition = c;
-    }
-
-    private void OnValidate()
-    {
-
     }
 }
