@@ -83,7 +83,7 @@ public class DeckGenerator : ScriptableObject
 		int index = UnityEngine.Random.Range(0, deck.Count);
 		CarriageDefinition def = deck[index];
 		m_deck.Remove(def);
-		return deck[index];
+		return def;
 	}
 
 	public void Shuffle()
