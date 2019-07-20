@@ -1,39 +1,39 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
-using System;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "DeckGenerator", menuName = "Logic/Deck Generator", order = 1)]
 public class DeckGenerator : ScriptableObject
 {
-    [SerializeField]
-    private int m_handSize = 9;
+	[SerializeField]
+	private int m_handSize = 9;
 
-    [SerializeField]
-    private List<CarriagePair> m_carriageList = new List<CarriagePair>();
+	[SerializeField]
+	private List<CarriagePair> m_carriageList = new List<CarriagePair>();
 
 	[SerializeField, FormerlySerializedAs("m_deck")]
-    private List<CarriageSettings> m_hand = new List<CarriageSettings> ();
+	private List<CarriageDefinition> m_hand = new List<CarriageDefinition>();
 
-    public List<CarriageSettings> GetHand ()
-    {
-        return m_hand;
-    }
+	public List<CarriageDefinition> GetHand()
+	{
+		return m_hand;
+	}
 
 	[Serializable]
 	public struct CarriagePair
 	{
-		public CarriageSettings Settings;
+		public CarriageDefinition Settings;
 		public int Count;
 	}
 
-	private List<CarriageSettings> m_deck = null;
+	private List<CarriageDefinition> m_deck = null;
 
 	public void ConstructPool()
 	{
-		m_deck = new List<CarriageSettings>();
+		m_deck = new List<CarriageDefinition>();
 
 		for (int i = 0; i < m_carriageList.Count; i++)
 		{
@@ -48,11 +48,11 @@ public class DeckGenerator : ScriptableObject
 	/// <summary>
 	/// Creates the hand
 	/// </summary>
-	public void Generate(List<CarriageSettings> exclude = null)
-    {
-        m_hand.Clear();
+	public void Generate(List<CarriageDefinition> exclude = null)
+	{
+		m_hand.Clear();
 
-		List<CarriageSettings> filteredDeck = new List<CarriageSettings>();
+		List<CarriageDefinition> filteredDeck = new List<CarriageDefinition>();
 		if (exclude == null)
 		{
 			filteredDeck = m_deck;
@@ -61,7 +61,7 @@ public class DeckGenerator : ScriptableObject
 		{
 			for (int i = 0; i < m_deck.Count; i++)
 			{
-				CarriageSettings c = m_deck[i];
+				CarriageDefinition c = m_deck[i];
 				if (!exclude.Contains(c))
 				{
 					filteredDeck.Add(c);
@@ -69,49 +69,49 @@ public class DeckGenerator : ScriptableObject
 			}
 		}
 
-        for (int i = 0; i < m_handSize; ++i)
-        {
-            CarriageSettings c = GetRandomCarriage(filteredDeck);
-            m_hand.Add(c);
-        }
+		for (int i = 0; i < m_handSize; ++i)
+		{
+			CarriageDefinition c = GetRandomCarriage(filteredDeck);
+			m_hand.Add(c);
+		}
 
-        Shuffle();
-    }
+		Shuffle();
+	}
 
-    private CarriageSettings GetRandomCarriage(List<CarriageSettings> deck)
-    {
+	private CarriageDefinition GetRandomCarriage(List<CarriageDefinition> deck)
+	{
 		int index = UnityEngine.Random.Range(0, deck.Count);
 
 		return deck[index];
-    }
+	}
 
-    public void Shuffle()
-    {
-        m_hand.Shuffle();
-    }
+	public void Shuffle()
+	{
+		m_hand.Shuffle();
+	}
 }
 
 [CustomEditor(typeof(DeckGenerator))]
 public class DeckGeneratorEditor : Editor
 {
-    public override void OnInspectorGUI()
-    {
-        DeckGenerator deck = (DeckGenerator) target;
+	public override void OnInspectorGUI()
+	{
+		DeckGenerator deck = (DeckGenerator) target;
 
-        if (DrawDefaultInspector())
-        {
+		if (DrawDefaultInspector())
+		{
 
-        }
+		}
 
-        if (GUILayout.Button("Generate"))
-        {
+		if (GUILayout.Button("Generate"))
+		{
 			deck.ConstructPool();
-            deck.Generate();
-        }
+			deck.Generate();
+		}
 
-        if (GUILayout.Button("Shuffle"))
-        {
-            deck.Shuffle();
-        }
-    }
+		if (GUILayout.Button("Shuffle"))
+		{
+			deck.Shuffle();
+		}
+	}
 }

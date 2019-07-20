@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (fileName = "CarriageSettings", menuName = "Logic/Carriage Settings", order = 1)]
+[CreateAssetMenu(fileName = "CarriageSettings", menuName = "Logic/Carriage Settings", order = 1)]
 [System.Serializable]
 public class CarriageDefinition : ScriptableObject
 {
@@ -27,13 +27,13 @@ public class CarriageDefinition : ScriptableObject
         Suffle,
     }
 
-    public CarriageDefinition ()
+    public CarriageDefinition()
     {
         m_color = Color.None;
         m_ability = Ability.None;
     }
 
-    public CarriageDefinition (Color c, Ability a)
+    public CarriageDefinition(Color c, Ability a)
     {
         m_color = c;
         m_ability = a;
@@ -45,18 +45,18 @@ public class CarriageDefinition : ScriptableObject
     [SerializeField]
     private Ability m_ability = Ability.None;
 
-    public Color GetColor ()
+    public Color GetColor()
     {
         return m_color;
     }
 
-    public Ability GetAbility ()
+    public Ability GetAbility()
     {
         return m_ability;
     }
 
-    public override string ToString ()
+    public override string ToString()
     {
-        return string.Format ("Carriage: {0} - {1}", m_color.ToString (), m_ability.ToString ());
+        return string.Format("Carriage: {0} - {1}", m_color.ToString(), m_ability.ToString());
     }
 }
