@@ -1,84 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5376683825921919414
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5376683825921919417}
-  - component: {fileID: 5376683825921919419}
-  - component: {fileID: 5376683825921919416}
-  m_Layer: 5
-  m_Name: PressSpace
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5376683825921919417
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5376683825921919414}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5376683826013523640}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1108.2, y: 349.7}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5376683825921919419
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5376683825921919414}
-  m_CullTransparentMesh: 0
---- !u!114 &5376683825921919416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5376683825921919414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 84
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 300
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Press Space To Win
 --- !u!1 &5376683826013523636
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +31,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 5376683825921919417}
   - {fileID: 4932965134851969574}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -192,6 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9adea4e0e6192684a8d14ccbe3aebfb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_turnLength: 25
+  m_generator: {fileID: 11400000, guid: bc4375a3a1eda4fc6a5b12361477626c, type: 2}
+  m_player1: {fileID: 4932965134354635138}
+  m_player2: {fileID: 2127860167445433457}
 --- !u!1001 &6565104628147947383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 2264895303225513297, guid: 7fef8655220554108b269e510022d19b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2264895303225513297, guid: 7fef8655220554108b269e510022d19b,
         type: 3}
@@ -309,6 +233,41 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2264895303734812395, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_Name
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088014712227089159, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 138.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088014712227089176, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_Name
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671603966830569407, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671603966830569407, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671603966830569407, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671603966830569407, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fef8655220554108b269e510022d19b, type: 3}
 --- !u!224 &4932965134851969574 stripped
@@ -317,3 +276,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6565104628147947383}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4932965134354635138 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2264895303734812405, guid: 7fef8655220554108b269e510022d19b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6565104628147947383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79a158d1291b4a12a00f9e82a1310d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2127860167445433457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5088014712227089158, guid: 7fef8655220554108b269e510022d19b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6565104628147947383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79a158d1291b4a12a00f9e82a1310d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
