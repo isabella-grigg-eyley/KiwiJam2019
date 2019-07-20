@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Color = CarriageDefinition.Color;
 
 public class Beetle : MonoBehaviour
 {
+    [SerializeField]
+    private HorizontalLayoutGroup m_layoutGroup = null;
+
     private int m_health = GameConstants.MAX_HAND_SIZE;
 
     public int Health
@@ -15,7 +19,7 @@ public class Beetle : MonoBehaviour
         }
         set
         {
-            Debug.Log(string.Format("Beetle {0} has {1} health", value));
+            Debug.Log(string.Format("Beetle {0} has {1} health", this.name, value));
             m_health = value;
         }
     }
@@ -31,6 +35,7 @@ public class Beetle : MonoBehaviour
     public void Reset()
     {
         Health = GameConstants.MAX_BEETLE_HP;
+        ClearCarriage();
     }
 
     public void Init()
@@ -53,12 +58,23 @@ public class Beetle : MonoBehaviour
 
         Debug.Log(string.Format("Beetle {0} added carriage {1}", this.name, carriage));
         m_carriageList.Add(carriage);
+
+        if (!carriage.GetGameObject())
+            return;
+        GameObject carriageContainer = Instantiate(carriage.GetGameObject(), Vector3.zero, Quaternion.identity);
+        carriageContainer.transform.SetParent(m_layoutGroup.transform, false);
     }
 
     public void ClearCarriage()
     {
         Debug.Log(string.Format("Beetle {0} cleared its carriage", this.name));
         m_carriageList.Clear();
+
+        // Delete the children from the layout group
+        foreach (Transform child in m_layoutGroup.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 
     [ContextMenu("Get Dominant Color")]
@@ -80,7 +96,6 @@ public class Beetle : MonoBehaviour
             {
                 m_colorsFound.Add(col, 1);
             }
-            // If it's already found, means we
             else
             {
                 m_colorsFound[col]++;
@@ -105,7 +120,7 @@ public class Beetle : MonoBehaviour
     [ContextMenu("Create Test Carriage (RRB)")]
     public void TestCarriageRRB()
     {
-        m_carriageList.Clear();
+        Reset();
         AddCarriage(new CarriageDefinition(
             Color.Red,
             CarriageDefinition.Ability.None
@@ -128,7 +143,7 @@ public class Beetle : MonoBehaviour
     [ContextMenu("Create Test Carriage (RGB)")]
     public void TestCarriageRGB()
     {
-        ClearCarriage();
+        Reset();
         AddCarriage(new CarriageDefinition(
             Color.Red,
             CarriageDefinition.Ability.None
@@ -151,7 +166,7 @@ public class Beetle : MonoBehaviour
     [ContextMenu("Create Test Carriage (RGGR)")]
     public void TestCarriageRGGR()
     {
-        ClearCarriage();
+        Reset();
         AddCarriage(new CarriageDefinition(
             Color.Red,
             CarriageDefinition.Ability.None
