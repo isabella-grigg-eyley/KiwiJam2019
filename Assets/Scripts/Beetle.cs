@@ -66,7 +66,7 @@ public class Beetle : MonoBehaviour
     {
         if (CarriageCount < GameConstants.MAX_HAND_SIZE)
         {
-            Debug.Log(string.Format("Beetle {0} did not return a dominant color — Hand size is not complete", this.name));
+            Debug.LogError(string.Format("Beetle {0} did not return a dominant color — Hand size is not complete", this.name));
         }
 
         Dictionary<Color, int> m_colorsFound = new Dictionary<Color, int>();
@@ -96,7 +96,7 @@ public class Beetle : MonoBehaviour
             }
         }
 
-        Debug.Log(string.Format("Beetle {0} did not return a dominant color", this.name));
+        Debug.Log(string.Format("Beetle {0} does not have a dominant color", this.name));
         return Color.None;
     }
 
