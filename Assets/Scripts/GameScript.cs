@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameScript : MonoBehaviour
 {
+	public static System.Action<Beetle, Beetle> OnReadyToFight = null;
+
 	[SerializeField]
 	private float m_turnLength = GameConstants.START_TURN_LENGTH;
 
@@ -23,6 +25,17 @@ public class GameScript : MonoBehaviour
 
 	private List<Carriage> m_currentAvailableCarriages = null;
 
+	public bool ReadyToFight
+	{
+		get
+		{
+			return (
+				m_player1.CarriageCount >= GameConstants.MAX_HAND_SIZE &&
+				m_player2.CarriageCount >= GameConstants.MAX_HAND_SIZE
+			);
+		}
+	}
+
 	// If false, it's player 2's turn
 	private bool m_player1Turn = true;
 
@@ -32,12 +45,17 @@ public class GameScript : MonoBehaviour
 
 	private void OnCarriageSelected(Carriage c)
 	{
+		if (ReadyToFight)
+		{
+			Debug.Log("READY TO FIGHT");
+			return;
+		}
 		CarriageDefinition.Color color = c.CarriageDefinition.GetColor();
-		
+
 		if (color == CarriageDefinition.Color.Wild)
 		{
 			int rand = UnityEngine.Random.Range(0, 3);
-			color = (CarriageDefinition.Color)rand;
+			color = (CarriageDefinition.Color) rand;
 		}
 
 		CarriageDefinition.Ability ability = c.CarriageDefinition.GetAbility();
@@ -73,7 +91,7 @@ public class GameScript : MonoBehaviour
 					Destroy(c1.gameObject);
 					Destroy(c2.gameObject);
 				}
-				
+
 				player.AddCarriage(color);
 				break;
 			case CarriageDefinition.Ability.DoubleDip:
@@ -98,10 +116,39 @@ public class GameScript : MonoBehaviour
 		return carriage;
 	}
 
+	private void OnEnable()
+	{
+		MatchOutcomeController.OnMatchOutcomeDecided += OnMatchOutcomeDecided;
+	}
+
+	private void OnMatchOutcomeDecided(bool p1wins)
+	{
+		Debug.LogFormat("Beetle {0} wins", p1wins ? m_player1.name : m_player2.name);
+
+		if (p1wins)
+		{
+			m_player1.LoseHealth();
+		}
+		else
+		{
+			m_player2.LoseHealth();
+		}
+
+		RestartRound();
+	}
+
+	private void RestartRound()
+	{
+		m_carriageContainer.GetComponent<CarriageMenu>().Reset();
+		m_currentHand.Clear();
+		m_player1.Reset();
+		m_player2.Reset();
+		InitializeRound();
+	}
+
 	private void Start()
 	{
 		m_generator.ConstructDeck();
-
 		InitializeRound();
 	}
 
@@ -136,6 +183,10 @@ public class GameScript : MonoBehaviour
 
 	private void NextTurn()
 	{
+		if (ReadyToFight)
+		{
+			OnReadyToFight?.Invoke(m_player1, m_player2);
+		}
 		m_player1Turn = !m_player1Turn;
 	}
 

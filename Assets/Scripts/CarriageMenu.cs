@@ -14,8 +14,16 @@ public class CarriageMenu : MonoBehaviour
 			{
 				continue;
 			}
-			
+
 			child.Rotate(0, 0, (360 / transform.childCount * i) + 180);
+		}
+	}
+
+	public void Reset()
+	{
+		foreach (Transform child in gameObject.transform)
+		{
+			Destroy(child.gameObject);
 		}
 	}
 }

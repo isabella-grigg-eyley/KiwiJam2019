@@ -5,6 +5,34 @@ using Color = CarriageDefinition.Color;
 
 public class MatchOutcomeController : MonoBehaviour
 {
+    public static System.Action<bool> OnMatchOutcomeDecided = null;
+
+    private void OnEnable()
+    {
+        GameScript.OnReadyToFight += OnReadyToFight;
+    }
+
+    private void OnReadyToFight(Beetle p1, Beetle p2)
+    {
+        Color p1Dom = p1.GetDominantColor();
+        Color p2Dom = p2.GetDominantColor();
+
+        Color outcome = DecideOutcome(p1Dom, p2Dom);
+
+        bool p1wins = outcome == p1Dom;
+
+        // Players tied, do extra logic
+        if (outcome != Color.None)
+        {
+            OnMatchOutcomeDecided?.Invoke(p1wins);
+            return;
+        }
+
+        // TODO: Hook up
+        Debug.LogWarning("DRAW");
+        Debug.Break();
+    }
+
     /// <summary>
     /// Selects who wins over the other
     /// </summary>
@@ -50,8 +78,8 @@ public class MatchOutcomeController : MonoBehaviour
 
     public void CheckCarriages(List<Color> p1, List<Color> p2)
     {
-        p1 = new List<Color>() {Color.Red, Color.Red, Color.Green};
-        p2 = new List<Color>() {Color.Red, Color.Red, Color.Blue};
+        p1 = new List<Color>() { Color.Red, Color.Green, Color.Green };
+        p2 = new List<Color>() { Color.Red, Color.Red, Color.Blue };
 
         List<Color> outcomes = new List<Color>();
         for (int i = 0; i < GameConstants.MAX_HAND_SIZE; ++i)
