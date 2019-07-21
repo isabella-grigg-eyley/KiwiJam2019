@@ -72,11 +72,11 @@ public class MatchOutcomeController : MonoBehaviour
     [ContextMenu("Test")]
     public void Test()
     {
+        CheckCarriages(new List<Color>(), new List<Color>());
+
         Color p1 = Color.Red;
         Color p2 = Color.Blue;
         Color winner1 = TestMatch(p1, p2);
-
-        CheckCarriages(p1, p2);
 
         p1 = Color.Red;
         p2 = Color.Green;
