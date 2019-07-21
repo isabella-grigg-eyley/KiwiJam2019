@@ -16,7 +16,7 @@ public class Beetle : MonoBehaviour
 	[SerializeField]
 	private Carriage carriagePrefab = null;
 
-    private int m_health = GameConstants.MAX_HAND_SIZE;
+    private int m_health = GameConstants.MAX_CARRIAGE_CAPACITY;
 
     public int Health
     {
@@ -78,7 +78,7 @@ public class Beetle : MonoBehaviour
 
 	public void AddCarriage(Color carriageColor)
 	{
-		if (CarriageCount >= GameConstants.MAX_HAND_SIZE)
+		if (CarriageCount >= GameConstants.MAX_CARRIAGE_CAPACITY)
 		{
 			Debug.LogWarning(string.Format("Beetle {0} carriage count is maxed out", this.name));
 			return;
@@ -108,7 +108,7 @@ public class Beetle : MonoBehaviour
     [ContextMenu("Get Dominant Color")]
     public Color GetDominantColor()
     {
-        if (CarriageCount < GameConstants.MAX_HAND_SIZE)
+        if (CarriageCount < GameConstants.MAX_CARRIAGE_CAPACITY)
         {
             Debug.LogError(string.Format("Beetle {0} did not return a dominant color — Hand size is not complete", this.name));
         }

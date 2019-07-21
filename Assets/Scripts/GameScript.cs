@@ -4,6 +4,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class GameScript : MonoBehaviour
 	private Carriage m_carriagePrefab = null;
 	[SerializeField]
 	private Transform m_carriageContainer = null;
+	[SerializeField]
+	private Text m_timerText = null;
 
 	private List<CarriageDefinition> m_currentHand = null;
 
@@ -35,8 +38,8 @@ public class GameScript : MonoBehaviour
 		get
 		{
 			return (
-				m_player1.CarriageCount >= GameConstants.MAX_HAND_SIZE &&
-				m_player2.CarriageCount >= GameConstants.MAX_HAND_SIZE
+				m_player1.CarriageCount >= GameConstants.MAX_CARRIAGE_CAPACITY &&
+				m_player2.CarriageCount >= GameConstants.MAX_CARRIAGE_CAPACITY
 			);
 		}
 	}
@@ -47,6 +50,8 @@ public class GameScript : MonoBehaviour
 	private float m_currentTurnTimer = 0;
 
 	private bool m_gameplayActive = false;
+
+	private bool m_doubleDip = false;
 
 	private void OnCarriageSelected(Carriage c)
 	{
@@ -84,6 +89,11 @@ public class GameScript : MonoBehaviour
 				player.AddCarriage(color);
 				break;
 			case CarriageDefinition.Ability.Send:
+				if (otherPlayer.CarriageCount == GameConstants.MAX_CARRIAGE_CAPACITY)
+				{
+					return;
+				}
+
 				otherPlayer.AddCarriage(color);
 				break;
 			case CarriageDefinition.Ability.Swap:
@@ -100,8 +110,8 @@ public class GameScript : MonoBehaviour
 				player.AddCarriage(color);
 				break;
 			case CarriageDefinition.Ability.DoubleDip:
+				m_doubleDip = true;
 				player.AddCarriage(color);
-				//TODO
 				break;
 			case CarriageDefinition.Ability.Shuffle:
 				player.AddCarriage(color);
@@ -111,7 +121,14 @@ public class GameScript : MonoBehaviour
 
 		c.gameObject.SetActive(false);
 
-		NextTurn();
+		if (m_doubleDip)
+		{
+			m_doubleDip = false;
+		}
+		else
+		{
+			NextTurn();
+		}
 	}
 
 	private Carriage CreateCarriage(CarriageDefinition def)
@@ -180,8 +197,13 @@ public class GameScript : MonoBehaviour
 
 	private void Update()
 	{
+		m_currentTurnTimer -= Time.deltaTime;
+		m_timerText.text = Mathf.CeilToInt(m_currentTurnTimer).ToString();
+
 		if (m_currentTurnTimer <= 0)
-			m_currentTurnTimer -= Time.deltaTime;
+		{
+			NextTurn();
+		}
 	}
 
 	private void InitializeRound(bool animate)
@@ -192,8 +214,6 @@ public class GameScript : MonoBehaviour
 		m_currentAvailableCarriages = new List<Carriage>();
 		for (int i = 0; i < m_currentHand.Count; i++)
 		{
-			//Carriage carriage = Instantiate<Carriage>(m_carriagePrefab, m_carriageContainer);
-			//carriage.Init(m_currentHand[i]);
 			Carriage carriage = CreateCarriage(m_currentHand[i]);
 			carriage.OnSelect += OnCarriageSelected;
 			carriage.transform.SetParent(m_carriageContainer);
@@ -223,6 +243,8 @@ public class GameScript : MonoBehaviour
 			OnReadyToFight?.Invoke(m_player1, m_player2);
 		}
 		m_player1Turn = !m_player1Turn;
+
+		TurnStart();
 	}
 
 	private void TurnStart()

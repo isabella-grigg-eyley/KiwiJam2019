@@ -82,7 +82,7 @@ public class MatchOutcomeController : MonoBehaviour
         p2 = new List<Color>() { Color.Red, Color.Red, Color.Blue };
 
         List<Color> outcomes = new List<Color>();
-        for (int i = 0; i < GameConstants.MAX_HAND_SIZE; ++i)
+        for (int i = 0; i < GameConstants.MAX_CARRIAGE_CAPACITY; ++i)
         {
             outcomes.Add(DecideOutcome(p1[i], p2[i]));
         }
