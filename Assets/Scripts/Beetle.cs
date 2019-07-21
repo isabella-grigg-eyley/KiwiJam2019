@@ -91,8 +91,6 @@ public class Beetle : MonoBehaviour
 		newCarriage.transform.SetParent(m_layoutGroup.transform, false);
 		newCarriage.Init(newDef, Carriage.State.Attached);
 		m_carriageList.Add(newCarriage);
-
-		newCarriage.Flip(m_playerNumber == 1);
 	}
 
     public void ClearCarriage()
