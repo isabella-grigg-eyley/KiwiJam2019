@@ -175,6 +175,9 @@ public class GameScript : MonoBehaviour
 		m_winnerText.DOFade(1, 0.35f);
 		m_winnerText.rectTransform.DOScale(Vector3.zero, 2).From().SetEase(Ease.OutBack).OnComplete(() =>
 		{
+			
+			FMODUnity.RuntimeManager.PlayOneShot("event:/Character/Attack");
+
 			m_winnerText.DOFade(0, 0.15f).SetDelay(1f).OnComplete(() =>
 			{
 				if (matchEnded)
