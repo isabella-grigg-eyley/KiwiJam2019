@@ -49,5 +49,7 @@ public class Carriage : MonoBehaviour
 	{
 		Debug.Log(string.Format("SELECTED {0}", c));
 		OnSelect?.Invoke(this);
+
+		FMODUnity.RuntimeManager.PlayOneShot("event:/UI/ButtonSubmit01");
 	}
 }
