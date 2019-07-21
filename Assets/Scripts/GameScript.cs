@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameScript : MonoBehaviour
 {
 	public static System.Action<Beetle, Beetle> OnReadyToFight = null;
+
+	[SerializeField]
+	private TextMeshProUGUI m_winnerText = null;
 
 	[SerializeField]
 	private float m_turnLength = GameConstants.START_TURN_LENGTH;
@@ -134,7 +139,27 @@ public class GameScript : MonoBehaviour
 			m_player2.LoseHealth();
 		}
 
-		RestartRound();
+		string text = string.Format("Player {0}", p1wins ? "1" : "2");
+
+		if (m_player1.Health <= 0 || m_player2.Health <= 0)
+		{
+			text += " wins!";
+		}
+		else
+		{
+			text += " won this round!";
+		}
+
+		m_winnerText.text = text;
+
+		m_winnerText.DOFade(1, 0.35f);
+		m_winnerText.rectTransform.DOScale(Vector3.zero, 2).From().SetEase(Ease.OutBack).OnComplete(() =>
+		{
+			m_winnerText.DOFade(0, 0.15f).SetDelay(1f).OnComplete(() =>
+			{
+				RestartRound();
+			});
+		});
 	}
 
 	private void RestartRound()
@@ -143,13 +168,14 @@ public class GameScript : MonoBehaviour
 		m_currentHand.Clear();
 		m_player1.Reset();
 		m_player2.Reset();
-		InitializeRound();
+		InitializeRound(false);
 	}
 
 	private void Start()
 	{
+		m_winnerText.text = "Get ready to choo!";
 		m_generator.ConstructDeck();
-		InitializeRound();
+		InitializeRound(true);
 	}
 
 	private void Update()
@@ -158,7 +184,7 @@ public class GameScript : MonoBehaviour
 			m_currentTurnTimer -= Time.deltaTime;
 	}
 
-	private void InitializeRound()
+	private void InitializeRound(bool animate)
 	{
 		m_generator.Generate();
 		m_currentHand = m_generator.GetHand();
@@ -179,6 +205,15 @@ public class GameScript : MonoBehaviour
 
 		m_gameplayActive = true;
 		TurnStart();
+
+		if (!animate)
+			return;
+
+		m_winnerText.DOFade(1, 0.35f);
+		m_winnerText.rectTransform.DOScale(Vector3.zero, 1).From().SetEase(Ease.OutBack).OnComplete(() =>
+		{
+			m_winnerText.DOFade(0, 0.15f).SetDelay(1f);
+		});
 	}
 
 	private void NextTurn()
