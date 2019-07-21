@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Carriage : MonoBehaviour
+public class Carriage : MonoBehaviour, IPointerEnterHandler
 {
 	public System.Action<Carriage> OnSelect = null;
 
@@ -43,7 +44,13 @@ public class Carriage : MonoBehaviour
 
 		if (state == State.Selectable)
 			m_button.onClick.AddListener(() => Select(this));
+		
 	}
+
+	public void OnPointerEnter(PointerEventData eventData)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/ButtonSelect01");
+    }
 
 	private void Select(Carriage c)
 	{
