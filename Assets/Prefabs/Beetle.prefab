@@ -133,7 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79a158d1291b4a12a00f9e82a1310d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerNumber: 1
   m_layoutGroup: {fileID: 6468981769869645033}
+  carriagePrefab: {fileID: 5574612692312270592, guid: 5fa0cff09d1204cd7a36e397cb0e2540,
+    type: 3}
   m_carriageList:
   - {fileID: 0}
   - {fileID: 0}

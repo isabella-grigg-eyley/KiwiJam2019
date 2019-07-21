@@ -13,6 +13,9 @@ public class Beetle : MonoBehaviour
     [SerializeField]
     private HorizontalLayoutGroup m_layoutGroup = null;
 
+	[SerializeField]
+	private Carriage carriagePrefab = null;
+
     private int m_health = GameConstants.MAX_HAND_SIZE;
 
     public int Health
@@ -43,6 +46,15 @@ public class Beetle : MonoBehaviour
         return m_carriageList[CarriageCount - 1];
     }
 
+	public Carriage RemoveLastCarriage()
+	{
+		if (CarriageCount == 0)
+			return null;
+		Carriage last = m_carriageList[CarriageCount - 1];
+		m_carriageList.RemoveAt(CarriageCount - 1);
+		return last;
+	}
+
     private void Start()
     {
         Init();
@@ -64,26 +76,24 @@ public class Beetle : MonoBehaviour
         Health--;
     }
 
-    public void AddCarriage(Carriage carriage)
-    {
-        if (CarriageCount >= GameConstants.MAX_HAND_SIZE)
-        {
-            Debug.LogWarning(string.Format("Beetle {0} carriage count is maxed out", this.name));
-            return;
-        }
+	public void AddCarriage(Color carriageColor)
+	{
+		if (CarriageCount >= GameConstants.MAX_HAND_SIZE)
+		{
+			Debug.LogWarning(string.Format("Beetle {0} carriage count is maxed out", this.name));
+			return;
+		}
 
-        Debug.Log(string.Format("Beetle {0} added carriage {1}", this.name, carriage));
-        m_carriageList.Add(carriage);
+		Debug.Log(string.Format("Beetle {0} added carriage color {1}", this.name, carriageColor));
 
-        Carriage newCarriage = GameObject.Instantiate(carriage, Vector3.zero, Quaternion.identity);
-        newCarriage.transform.SetParent(m_layoutGroup.transform, false);
-        newCarriage.Init(carriage.CarriageDefinition, Carriage.State.Attached);
+		CarriageDefinition newDef = new CarriageDefinition(carriageColor, CarriageDefinition.Ability.None);
+		Carriage newCarriage = Instantiate(carriagePrefab, Vector3.zero, Quaternion.identity);
+		newCarriage.transform.SetParent(m_layoutGroup.transform, false);
+		newCarriage.Init(newDef, Carriage.State.Attached);
+		m_carriageList.Add(newCarriage);
 
-        newCarriage.Flip(m_playerNumber == 1);
-
-        // Disable the one we chose
-        carriage.gameObject.SetActive(false);
-    }
+		newCarriage.Flip(m_playerNumber == 1);
+	}
 
     public void ClearCarriage()
     {

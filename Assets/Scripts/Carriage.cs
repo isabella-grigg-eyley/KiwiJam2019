@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Carriage : MonoBehaviour
 {
+	public System.Action<Carriage> OnSelect = null;
+
 	[System.Serializable]
 	public enum State
 	{
@@ -51,6 +53,6 @@ public class Carriage : MonoBehaviour
 	private void Select(Carriage c)
 	{
 		Debug.Log(string.Format("SELECTED {0}", c));
-		GameScript.SelectCarriage(c);
+		OnSelect?.Invoke(this);
 	}
 }

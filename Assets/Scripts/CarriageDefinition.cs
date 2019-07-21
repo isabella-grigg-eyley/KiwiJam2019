@@ -10,7 +10,7 @@ public class CarriageDefinition : ScriptableObject
     [System.Serializable]
     public enum Color
     {
-        Red,
+        Red = 0,
         Green,
         Blue,
         Wild,

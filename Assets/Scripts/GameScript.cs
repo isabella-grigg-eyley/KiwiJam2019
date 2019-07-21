@@ -30,36 +30,78 @@ public class GameScript : MonoBehaviour
 
 	private bool m_gameplayActive = false;
 
-	public delegate void SelectCarriageDelegate(Carriage c);
-	public static event SelectCarriageDelegate OnSelectCarriage;
-
-	public static void SelectCarriage(Carriage c)
-	{
-		OnSelectCarriage(c);
-	}
-
-	private void OnEnable()
-	{
-		OnSelectCarriage += OnCarriageSelected;
-	}
-
 	private void OnCarriageSelected(Carriage c)
 	{
-		if (m_player1Turn)
+		CarriageDefinition.Color color = c.CarriageDefinition.GetColor();
+		
+		if (color == CarriageDefinition.Color.Wild)
 		{
-			m_player1.AddCarriage(c);
+			int rand = UnityEngine.Random.Range(0, 3);
+			color = (CarriageDefinition.Color)rand;
 		}
-		else{
-			m_player2.AddCarriage(c);
+
+		CarriageDefinition.Ability ability = c.CarriageDefinition.GetAbility();
+
+		Beetle player = GetCurrentPlayer();
+		Beetle otherPlayer = GetOtherPlayer();
+
+		switch (ability)
+		{
+			case CarriageDefinition.Ability.None:
+				player.AddCarriage(color);
+				break;
+			case CarriageDefinition.Ability.Copy:
+				if (player.CarriageCount == 0)
+				{
+					return;
+				}
+
+				Carriage lastCarriage = player.GetLastCarriage();
+				color = lastCarriage.CarriageDefinition.GetColor();
+				player.AddCarriage(color);
+				break;
+			case CarriageDefinition.Ability.Send:
+				otherPlayer.AddCarriage(color);
+				break;
+			case CarriageDefinition.Ability.Swap:
+				if (player.CarriageCount > 0 && otherPlayer.CarriageCount > 0)
+				{
+					Carriage c1 = player.RemoveLastCarriage();
+					Carriage c2 = otherPlayer.RemoveLastCarriage();
+					player.AddCarriage(c2.CarriageDefinition.GetColor());
+					otherPlayer.AddCarriage(c1.CarriageDefinition.GetColor());
+					Destroy(c1.gameObject);
+					Destroy(c2.gameObject);
+				}
+				
+				player.AddCarriage(color);
+				break;
+			case CarriageDefinition.Ability.DoubleDip:
+				player.AddCarriage(color);
+				//TODO
+				break;
+			case CarriageDefinition.Ability.Shuffle:
+				player.AddCarriage(color);
+				//TODO
+				break;
 		}
+
+		c.gameObject.SetActive(false);
 
 		NextTurn();
 	}
 
+	private Carriage CreateCarriage(CarriageDefinition def)
+	{
+		Carriage carriage = Instantiate(m_carriagePrefab, Vector3.zero, Quaternion.identity);
+		carriage.Init(def);
+		return carriage;
+	}
+
 	private void Start()
 	{
-		CarriageImageDatabase db = CarriageImageDatabase.Instance;
 		m_generator.ConstructDeck();
+
 		InitializeRound();
 	}
 
@@ -77,8 +119,11 @@ public class GameScript : MonoBehaviour
 		m_currentAvailableCarriages = new List<Carriage>();
 		for (int i = 0; i < m_currentHand.Count; i++)
 		{
-			Carriage carriage = Instantiate<Carriage>(m_carriagePrefab, m_carriageContainer);
-			carriage.Init(m_currentHand[i]);
+			//Carriage carriage = Instantiate<Carriage>(m_carriagePrefab, m_carriageContainer);
+			//carriage.Init(m_currentHand[i]);
+			Carriage carriage = CreateCarriage(m_currentHand[i]);
+			carriage.OnSelect += OnCarriageSelected;
+			carriage.transform.SetParent(m_carriageContainer);
 
 			m_currentAvailableCarriages.Add(carriage);
 		}
@@ -97,5 +142,29 @@ public class GameScript : MonoBehaviour
 	private void TurnStart()
 	{
 		m_currentTurnTimer = m_turnLength;
+	}
+
+	private Beetle GetCurrentPlayer()
+	{
+		if (m_player1Turn)
+		{
+			return m_player1;
+		}
+		else
+		{
+			return m_player2;
+		}
+	}
+
+	private Beetle GetOtherPlayer()
+	{
+		if (m_player1Turn)
+		{
+			return m_player2;
+		}
+		else
+		{
+			return m_player1;
+		}
 	}
 }
