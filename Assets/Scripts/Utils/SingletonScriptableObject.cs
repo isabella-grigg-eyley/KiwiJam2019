@@ -16,7 +16,8 @@ public abstract class SingletonScriptableObject<T> : ScriptableObject where T : 
         get
         {
             if (!_instance)
-                _instance = Resources.FindObjectsOfTypeAll<T>().FirstOrDefault();
+                // _instance = Resources.FindObjectsOfTypeAll<T>().FirstOrDefault();
+                _instance = Resources.Load("CarrierImageDatabase") as T;
             return _instance;
         }
     }
