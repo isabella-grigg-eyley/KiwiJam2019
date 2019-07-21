@@ -92,10 +92,12 @@ public class GameScript : MonoBehaviour
 			case CarriageDefinition.Ability.Send:
 				if (otherPlayer.CarriageCount == GameConstants.MAX_CARRIAGE_CAPACITY)
 				{
-					return;
+					player.AddCarriage(color);
 				}
-
-				otherPlayer.AddCarriage(color);
+				else
+				{
+					otherPlayer.AddCarriage(color);
+				}
 				break;
 			case CarriageDefinition.Ability.Swap:
 				if (player.CarriageCount > 0 && otherPlayer.CarriageCount > 0)
@@ -116,7 +118,10 @@ public class GameScript : MonoBehaviour
 				break;
 			case CarriageDefinition.Ability.Shuffle:
 				player.AddCarriage(color);
-				//TODO
+				m_carriageContainer.GetComponent<CarriageMenu>().Reset();
+				m_currentHand.Clear();
+				DrawHand();
+				m_carriageContainer.GetComponent<CarriageMenu>().Init();
 				break;
 		}
 
@@ -200,6 +205,7 @@ public class GameScript : MonoBehaviour
 		m_currentHand.Clear();
 		m_player1.Reset();
 		m_player2.Reset();
+		m_generator.ConstructDeck();
 		InitializeRound(false);
 	}
 
@@ -223,20 +229,7 @@ public class GameScript : MonoBehaviour
 
 	private void InitializeRound(bool animate)
 	{
-		m_generator.Generate();
-		m_currentHand = m_generator.GetHand();
-
-		m_currentAvailableCarriages = new List<Carriage>();
-		for (int i = 0; i < m_currentHand.Count; i++)
-		{
-			Carriage carriage = CreateCarriage(m_currentHand[i]);
-			carriage.OnSelect += OnCarriageSelected;
-			carriage.transform.SetParent(m_carriageContainer);
-
-			m_currentAvailableCarriages.Add(carriage);
-		}
-
-		m_carriageContainer.GetComponent<CarriageMenu>().Init();
+		DrawHand();
 
 		m_gameplayActive = true;
 		TurnStart();
@@ -251,9 +244,43 @@ public class GameScript : MonoBehaviour
 		});
 	}
 
+	private void DrawHand()
+	{
+		m_generator.Generate();
+		m_currentHand = m_generator.GetHand();
+
+		m_currentAvailableCarriages = new List<Carriage>();
+		for (int i = 0; i < m_currentHand.Count; i++)
+		{
+			Carriage carriage = CreateCarriage(m_currentHand[i]);
+			carriage.OnSelect += OnCarriageSelected;
+			carriage.transform.SetParent(m_carriageContainer);
+
+			m_currentAvailableCarriages.Add(carriage);
+		}
+
+		m_carriageContainer.GetComponent<CarriageMenu>().Init();
+	}
+
 	private void NextTurn()
 	{
-		m_player1Turn = !m_player1Turn;
+		if (m_player1.CarriageCount == 3 && m_player1.CarriageCount == m_player2.CarriageCount)
+		{
+			return;
+		}
+		
+		if (m_player1.CarriageCount == 3)
+		{
+			m_player1Turn = false;
+		}
+		else if (m_player2.CarriageCount == 3)
+		{
+			m_player1Turn = true;
+		}
+		else
+		{
+			m_player1Turn = !m_player1Turn;
+		}
 
 		TurnStart();
 	}
