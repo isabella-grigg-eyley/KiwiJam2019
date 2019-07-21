@@ -91,6 +91,31 @@ public class Beetle : MonoBehaviour
 		newCarriage.transform.SetParent(m_layoutGroup.transform, false);
 		newCarriage.Init(newDef, Carriage.State.Attached);
 		m_carriageList.Add(newCarriage);
+
+		Color color = GetDominantColor();
+		Debug.Log("dominant color: " + color);
+
+		Transform beetleImage = null;
+		foreach (Transform child in transform)
+		{
+			if (child.name == "Beetle" + m_playerNumber)
+			{
+				beetleImage = child;
+				break;
+			}
+		}
+
+		foreach (Transform child in beetleImage)
+		{
+			if (child.name == color.ToString())
+			{
+				child.gameObject.SetActive(true);
+			}
+			else
+			{
+				child.gameObject.SetActive(false);
+			}
+		}
 	}
 
     public void ClearCarriage()
@@ -108,10 +133,10 @@ public class Beetle : MonoBehaviour
     [ContextMenu("Get Dominant Color")]
     public Color GetDominantColor()
     {
-        if (CarriageCount < GameConstants.MAX_CARRIAGE_CAPACITY)
-        {
-            Debug.LogError(string.Format("Beetle {0} did not return a dominant color — Hand size is not complete", this.name));
-        }
+        //if (CarriageCount < GameConstants.MAX_CARRIAGE_CAPACITY)
+        //{
+        //    Debug.LogError(string.Format("Beetle {0} did not return a dominant color — Hand size is not complete", this.name));
+        //}
 
         Dictionary<Color, int> m_colorsFound = new Dictionary<Color, int>();
 
@@ -132,17 +157,26 @@ public class Beetle : MonoBehaviour
             }
         }
 
-        foreach (var c in m_colorsFound)
+		Color dominantColor = Color.None;
+		int dominantNum = 0;
+
+		foreach (var c in m_colorsFound)
         {
-            if (c.Value >= GameConstants.DOMINANT_COLOR_AMOUNT)
+            if (c.Value > dominantNum)
             {
-                Debug.Log(string.Format("Beetle {0} returned dominant color: {1}", this.name, c.Key));
-                return c.Key;
+				dominantNum = c.Value;
+                dominantColor = c.Key;
             }
+			else if (c.Value == dominantNum)
+			{
+				dominantColor = Color.None;
+			}
         }
 
-        Debug.Log(string.Format("Beetle {0} does not have a dominant color", this.name));
-        return Color.None;
+		Debug.Log(string.Format("Beetle {0} returned dominant color: {1}", this.name, dominantColor));
+		//Debug.Log(string.Format("Beetle {0} does not have a dominant color", this.name));
+
+		return dominantColor;
     }
 
 #if UNITY_EDITOR
