@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 5376683826013523638}
   - component: {fileID: 5376683826013523639}
   - component: {fileID: 5376683826013523643}
+  - component: {fileID: 7074941636823903784}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -283,6 +284,18 @@ MonoBehaviour:
     type: 3}
   m_carriageContainer: {fileID: 1549611482033219777}
   m_timerText: {fileID: 6397611170910383558}
+--- !u!114 &7074941636823903784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376683826013523636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8013c12c699f9455e8b1743ee95e5e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3869265750238913918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -822,17 +835,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -60
       objectReference: {fileID: 0}
+    - target: {fileID: 6014750886645612463, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4733512282027324685, guid: 7fef8655220554108b269e510022d19b,
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2176016418055788088, guid: 7fef8655220554108b269e510022d19b,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014750886645612463, guid: 7fef8655220554108b269e510022d19b,
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0
