@@ -132,17 +132,19 @@ public class GameScript : MonoBehaviour
 
 		if (p1wins)
 		{
-			m_player1.LoseHealth();
+			m_player2.LoseHealth();
 		}
 		else
 		{
-			m_player2.LoseHealth();
+			m_player1.LoseHealth();
 		}
 
 		string text = string.Format("Player {0}", p1wins ? "1" : "2");
 
+		bool matchEnded = false;
 		if (m_player1.Health <= 0 || m_player2.Health <= 0)
 		{
+			matchEnded = true;
 			text += " wins!";
 		}
 		else
@@ -157,7 +159,14 @@ public class GameScript : MonoBehaviour
 		{
 			m_winnerText.DOFade(0, 0.15f).SetDelay(1f).OnComplete(() =>
 			{
-				RestartRound();
+				if (matchEnded)
+				{
+					SceneManager.LoadScene("TitleScreen", LoadSceneMode.Single);
+				}
+				else
+				{
+					RestartRound();
+				}
 			});
 		});
 	}
