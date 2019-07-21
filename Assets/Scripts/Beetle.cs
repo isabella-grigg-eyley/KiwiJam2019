@@ -16,18 +16,18 @@ public class Beetle : MonoBehaviour
 	[SerializeField]
 	private Carriage carriagePrefab = null;
 
-    private int m_health = GameConstants.MAX_CARRIAGE_CAPACITY;
+    private int m_points = 0;
 
-    public int Health
+    public int Points
     {
         get
         {
-            return m_health;
+            return m_points;
         }
         set
         {
             Debug.Log(string.Format("Beetle {0} has {1} health", this.name, value));
-            m_health = value;
+            m_points = value;
         }
     }
 
@@ -63,7 +63,7 @@ public class Beetle : MonoBehaviour
 
     public void Init()
     {
-        Health = GameConstants.MAX_BEETLE_HP;
+        Points = 0;
     }
 
     public void Reset()
@@ -71,9 +71,9 @@ public class Beetle : MonoBehaviour
         ClearCarriage();
     }
 
-    public void LoseHealth()
+    public void GainPoint()
     {
-        Health--;
+        Points++;
     }
 
 	public void AddCarriage(Color carriageColor)
@@ -85,7 +85,7 @@ public class Beetle : MonoBehaviour
 		}
 
 		Debug.Log(string.Format("Beetle {0} added carriage color {1}", this.name, carriageColor));
-		
+
 		CarriageDefinition newDef = new CarriageDefinition(carriageColor, CarriageDefinition.Ability.None);
 		Carriage newCarriage = Instantiate(carriagePrefab, Vector3.zero, Quaternion.identity);
 		newCarriage.transform.SetParent(m_layoutGroup.transform, false);

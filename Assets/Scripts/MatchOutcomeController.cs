@@ -21,16 +21,8 @@ public class MatchOutcomeController : MonoBehaviour
 
         bool p1wins = outcome == p1Dom;
 
-        // Players tied, do extra logic
-        if (outcome != Color.None)
-        {
-            OnMatchOutcomeDecided?.Invoke(p1wins);
-            return;
-        }
-
-        // TODO: Hook up
-        Debug.LogWarning("DRAW");
-        Debug.Break();
+        OnMatchOutcomeDecided?.Invoke(p1wins);
+        return;
     }
 
     /// <summary>

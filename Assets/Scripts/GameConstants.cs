@@ -1,6 +1,6 @@
 ﻿public static class GameConstants
 {
-    public const int MAX_BEETLE_HP = 3;
+    public const int POINTS_TO_WIN = 2;
 
     public const int MAX_CARRIAGE_CAPACITY = 3;
 

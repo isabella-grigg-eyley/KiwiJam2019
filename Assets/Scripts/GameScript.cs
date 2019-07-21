@@ -10,6 +10,19 @@ public class GameScript : MonoBehaviour
 {
 	public static System.Action<Beetle, Beetle> OnReadyToFight = null;
 
+	[System.Serializable]
+	public class Visuals
+	{
+		public GameObject P1Turnlights = null;
+		public GameObject P2Turnlights = null;
+
+		public List<GameObject> P1Points = null;
+		public List<GameObject> P2Points = null;
+	}
+
+	[SerializeField]
+	private Visuals m_visuals = null;
+
 	[SerializeField]
 	private TextMeshProUGUI m_winnerText = null;
 
@@ -160,20 +173,35 @@ public class GameScript : MonoBehaviour
 
 		if (p1wins)
 		{
-			m_player2.LoseHealth();
+			m_player2.GainPoint();
 		}
 		else
 		{
-			m_player1.LoseHealth();
+			m_player1.GainPoint();
 		}
 
+		// Fill all points for player 1
+		for (int i = 0; i < m_player1.Points; ++i)
+		{
+			m_visuals.P1Points[i].SetActive(true);
+		}
+
+		// Fill all points for player 2
+		for (int i = 0; i < m_player2.Points; ++i)
+		{
+			m_visuals.P2Points[i].SetActive(true);
+		}
+
+		// Handle the match/game winner
 		string text = string.Format("Player {0}", p1wins ? "1" : "2");
 
 		bool matchEnded = false;
-		if (m_player1.Health <= 0 || m_player2.Health <= 0)
+		if (
+			m_player1.Points >= GameConstants.POINTS_TO_WIN ||
+			m_player2.Points >= GameConstants.POINTS_TO_WIN)
 		{
 			matchEnded = true;
-			text += " wins!";
+			text += " is the winner!";
 		}
 		else
 		{
@@ -214,6 +242,16 @@ public class GameScript : MonoBehaviour
 
 	private void Start()
 	{
+		foreach (GameObject go in m_visuals.P1Points)
+		{
+			go.SetActive(false);
+		}
+
+		foreach (GameObject go in m_visuals.P2Points)
+		{
+			go.SetActive(false);
+		}
+
 		m_winnerText.text = "Get ready to choo!";
 		m_generator.ConstructDeck();
 		InitializeRound(true);
@@ -291,6 +329,8 @@ public class GameScript : MonoBehaviour
 	private void TurnStart()
 	{
 		m_currentTurnTimer = m_turnLength;
+		m_visuals.P1Turnlights.SetActive(m_player1Turn);
+		m_visuals.P2Turnlights.SetActive(!m_player1Turn);
 	}
 
 	private Beetle GetCurrentPlayer()
