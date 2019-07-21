@@ -5,16 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class TitleScript : MonoBehaviour
 {
-	void Start ()
+	void Update()
 	{
-
+		if (Input.GetKeyDown(KeyCode.Return))
+		{
+			OnStartGame();
+		}
 	}
 
-	void Update ()
+	public void OnStartGame()
 	{
-		if (Input.GetKeyDown (KeyCode.Return))
-		{
-			SceneManager.LoadScene ("Game", LoadSceneMode.Single);			
-		}
+		SceneManager.LoadScene("Game", LoadSceneMode.Single);
+	}
+
+	public void OnInstructions()
+	{
+
 	}
 }

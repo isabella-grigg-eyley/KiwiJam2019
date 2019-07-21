@@ -79,8 +79,6 @@ public class Beetle : MonoBehaviour
         newCarriage.transform.SetParent(m_layoutGroup.transform, false);
         newCarriage.Init(carriage.CarriageDefinition, Carriage.State.Attached);
 
-        newCarriage.Flip(m_playerNumber == 1);
-
         // Disable the one we chose
         carriage.gameObject.SetActive(false);
     }
