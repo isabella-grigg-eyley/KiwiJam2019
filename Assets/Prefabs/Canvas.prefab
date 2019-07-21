@@ -303,11 +303,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5376683826013523640}
     m_Modifications:
-    - target: {fileID: 7245857140574295041, guid: de84da05b9b01364f9c94b7a4b9183b5,
-        type: 3}
-      propertyPath: m_Name
-      value: CarriageMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 2320259659092954559, guid: de84da05b9b01364f9c94b7a4b9183b5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -413,6 +408,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7245857140574295041, guid: de84da05b9b01364f9c94b7a4b9183b5,
+        type: 3}
+      propertyPath: m_Name
+      value: CarriageMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1290231344341094853, guid: de84da05b9b01364f9c94b7a4b9183b5,
         type: 3}
       propertyPath: fDistance
@@ -433,11 +433,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5376683826013523640}
     m_Modifications:
-    - target: {fileID: 3449777183839025627, guid: 2767f56c088734117bd0852bc8234706,
-        type: 3}
-      propertyPath: m_Name
-      value: EnvironmentArt
-      objectReference: {fileID: 0}
     - target: {fileID: 5725077263083786080, guid: 2767f56c088734117bd0852bc8234706,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -543,6 +538,29 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3449777183839025627, guid: 2767f56c088734117bd0852bc8234706,
+        type: 3}
+      propertyPath: m_Name
+      value: EnvironmentArt
+      objectReference: {fileID: 0}
+    - target: {fileID: 6592195871546956230, guid: 2767f56c088734117bd0852bc8234706,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8cc81eb85d80a4a23acea87db2faa477,
+        type: 3}
+    - target: {fileID: 4148602000954366017, guid: 2767f56c088734117bd0852bc8234706,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 27c5aa13f02994743a706fe6279dc965,
+        type: 3}
+    - target: {fileID: 5942636858022997857, guid: 2767f56c088734117bd0852bc8234706,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d6141d85a30824a00ad59082103dd9a4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2767f56c088734117bd0852bc8234706, type: 3}
 --- !u!224 &172244364619470208 stripped
@@ -558,11 +576,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5376683826013523640}
     m_Modifications:
-    - target: {fileID: 1335048231983476211, guid: f2270a60c73ac7949a5a559ece53b229,
-        type: 3}
-      propertyPath: m_Name
-      value: Timer
-      objectReference: {fileID: 0}
     - target: {fileID: 7045400052741923460, guid: f2270a60c73ac7949a5a559ece53b229,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -668,6 +681,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1335048231983476211, guid: f2270a60c73ac7949a5a559ece53b229,
+        type: 3}
+      propertyPath: m_Name
+      value: Timer
+      objectReference: {fileID: 0}
     - target: {fileID: 1109633938716490948, guid: f2270a60c73ac7949a5a559ece53b229,
         type: 3}
       propertyPath: m_RaycastTarget
@@ -700,11 +718,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5376683826013523640}
     m_Modifications:
-    - target: {fileID: 2264895303225513296, guid: 7fef8655220554108b269e510022d19b,
-        type: 3}
-      propertyPath: m_Name
-      value: Battle
-      objectReference: {fileID: 0}
     - target: {fileID: 2264895303225513297, guid: 7fef8655220554108b269e510022d19b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -814,6 +827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_playerNumber
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264895303225513296, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_Name
+      value: Battle
       objectReference: {fileID: 0}
     - target: {fileID: 6732357177818499050, guid: 7fef8655220554108b269e510022d19b,
         type: 3}
