@@ -53,11 +53,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2264895303225513297}
     m_Modifications:
-    - target: {fileID: 6155537809829688318, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
-        type: 3}
-      propertyPath: m_Name
-      value: Beetle
-      objectReference: {fileID: 0}
     - target: {fileID: 6155537809829688289, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -163,6 +158,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6155537809829688318, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
+        type: 3}
+      propertyPath: m_Name
+      value: Beetle
+      objectReference: {fileID: 0}
     - target: {fileID: 6901952584390688343, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
         type: 3}
       propertyPath: m_Enabled
@@ -172,6 +172,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625176222244819923, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598845275066868267, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0dfb5468f1ac476eb770a5ce65c2b64, type: 3}
@@ -188,11 +198,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2264895303225513297}
     m_Modifications:
-    - target: {fileID: 6155537809829688318, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
-        type: 3}
-      propertyPath: m_Name
-      value: Beetle (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6155537809829688289, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -303,20 +308,35 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 1598845275066868266, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
+    - target: {fileID: 6155537809829688318, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Name
+      value: Beetle (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6901952584390688343, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1598845275066868266, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5625176222244819923, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
         type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625176222244819923, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598845275066868267, guid: b0dfb5468f1ac476eb770a5ce65c2b64,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0dfb5468f1ac476eb770a5ce65c2b64, type: 3}

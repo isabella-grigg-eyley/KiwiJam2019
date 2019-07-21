@@ -312,11 +312,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5376683826013523640}
     m_Modifications:
-    - target: {fileID: 3449777183839025627, guid: 2767f56c088734117bd0852bc8234706,
-        type: 3}
-      propertyPath: m_Name
-      value: EnvironmentArt
-      objectReference: {fileID: 0}
     - target: {fileID: 5725077263083786080, guid: 2767f56c088734117bd0852bc8234706,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -422,6 +417,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3449777183839025627, guid: 2767f56c088734117bd0852bc8234706,
+        type: 3}
+      propertyPath: m_Name
+      value: EnvironmentArt
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2767f56c088734117bd0852bc8234706, type: 3}
 --- !u!224 &172244364619470208 stripped
@@ -449,11 +449,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5376683826013523640}
     m_Modifications:
-    - target: {fileID: 1335048231983476211, guid: f2270a60c73ac7949a5a559ece53b229,
-        type: 3}
-      propertyPath: m_Name
-      value: Timer
-      objectReference: {fileID: 0}
     - target: {fileID: 7045400052741923460, guid: f2270a60c73ac7949a5a559ece53b229,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,6 +553,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335048231983476211, guid: f2270a60c73ac7949a5a559ece53b229,
+        type: 3}
+      propertyPath: m_Name
+      value: Timer
       objectReference: {fileID: 0}
     - target: {fileID: 1109633938716490948, guid: f2270a60c73ac7949a5a559ece53b229,
         type: 3}
@@ -699,11 +699,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5376683826013523640}
     m_Modifications:
-    - target: {fileID: 2264895303225513296, guid: 7fef8655220554108b269e510022d19b,
-        type: 3}
-      propertyPath: m_Name
-      value: Battle
-      objectReference: {fileID: 0}
     - target: {fileID: 2264895303225513297, guid: 7fef8655220554108b269e510022d19b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -814,6 +809,11 @@ PrefabInstance:
       propertyPath: m_playerNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2264895303225513296, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_Name
+      value: Battle
+      objectReference: {fileID: 0}
     - target: {fileID: 6732357177818499050, guid: 7fef8655220554108b269e510022d19b,
         type: 3}
       propertyPath: m_Name
@@ -859,6 +859,26 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4733512282027324682, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842058977427555570, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176016418055788095, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049201285361723335, guid: 7fef8655220554108b269e510022d19b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fef8655220554108b269e510022d19b, type: 3}
 --- !u!224 &4932965134851969574 stripped
@@ -898,11 +918,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5376683826013523640}
     m_Modifications:
-    - target: {fileID: 7245857140574295041, guid: de84da05b9b01364f9c94b7a4b9183b5,
-        type: 3}
-      propertyPath: m_Name
-      value: CarriageMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 2320259659092954559, guid: de84da05b9b01364f9c94b7a4b9183b5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1007,6 +1022,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245857140574295041, guid: de84da05b9b01364f9c94b7a4b9183b5,
+        type: 3}
+      propertyPath: m_Name
+      value: CarriageMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de84da05b9b01364f9c94b7a4b9183b5, type: 3}
