@@ -16,6 +16,8 @@ public class CarriageMenu : MonoBehaviour
 			}
 
 			child.Rotate(0, 0, (360 / transform.childCount * i) + 180);
+
+			child.localScale = Vector3.one;
 		}
 	}
 

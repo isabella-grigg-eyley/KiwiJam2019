@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "DeckGenerator", menuName = "Logic/Deck Generator", order = 1)]
 public class DeckGenerator : ScriptableObject
@@ -92,6 +94,7 @@ public class DeckGenerator : ScriptableObject
 	}
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(DeckGenerator))]
 public class DeckGeneratorEditor : Editor
 {
@@ -99,7 +102,7 @@ public class DeckGeneratorEditor : Editor
 	{
 		DeckGenerator deck = (DeckGenerator) target;
 
-		if (DrawDefaultInspector()) {}
+		if (DrawDefaultInspector()) { }
 
 		if (GUILayout.Button("Generate"))
 		{
@@ -113,3 +116,4 @@ public class DeckGeneratorEditor : Editor
 		}
 	}
 }
+#endif

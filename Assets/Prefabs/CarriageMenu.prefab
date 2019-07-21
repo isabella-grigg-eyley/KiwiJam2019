@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 10}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6742634730481608965
 CanvasRenderer:
@@ -64,7 +64,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  fDistance: 188.62
+  fDistance: 150
   MinAngle: 0
   MaxAngle: 360
   StartAngle: 90
@@ -80,7 +80,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3278347ef86b6ff489f1d482d143ffbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fDistance: 100
-  MinAngle: 0
-  MaxAngle: 360
-  StartAngle: 90
