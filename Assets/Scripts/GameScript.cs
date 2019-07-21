@@ -58,6 +58,7 @@ public class GameScript : MonoBehaviour
 		if (ReadyToFight)
 		{
 			Debug.Log("READY TO FIGHT");
+			OnReadyToFight?.Invoke(m_player1, m_player2);
 			return;
 		}
 		CarriageDefinition.Color color = c.CarriageDefinition.GetColor();
