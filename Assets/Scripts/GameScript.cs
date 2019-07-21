@@ -214,12 +214,14 @@ public class GameScript : MonoBehaviour
 		m_winnerText.rectTransform.DOScale(Vector3.zero, 2).From().SetEase(Ease.OutBack).OnComplete(() =>
 		{
 			
-			FMODUnity.RuntimeManager.PlayOneShot("event:/Character/Attack");
+			FMODUnity.RuntimeManager.PlayOneShot("event:/Character/AttackWhistle");
 
 			m_winnerText.DOFade(0, 0.15f).SetDelay(1f).OnComplete(() =>
 			{
 				if (matchEnded)
 				{
+					MusicController.MC.GameStartedMusic();
+
 					SceneManager.LoadScene("TitleScreen", LoadSceneMode.Single);
 				}
 				else
