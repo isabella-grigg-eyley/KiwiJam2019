@@ -400,5 +400,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1549611482033219777, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618199012395054267, guid: 34e3848ae3bf7440d8ac677a47cdb4f7,
+        type: 3}
+      propertyPath: fDistance
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34e3848ae3bf7440d8ac677a47cdb4f7, type: 3}
