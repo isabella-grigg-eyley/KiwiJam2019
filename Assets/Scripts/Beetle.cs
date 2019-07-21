@@ -85,7 +85,7 @@ public class Beetle : MonoBehaviour
 		}
 
 		Debug.Log(string.Format("Beetle {0} added carriage color {1}", this.name, carriageColor));
-
+		
 		CarriageDefinition newDef = new CarriageDefinition(carriageColor, CarriageDefinition.Ability.None);
 		Carriage newCarriage = Instantiate(carriagePrefab, Vector3.zero, Quaternion.identity);
 		newCarriage.transform.SetParent(m_layoutGroup.transform, false);

@@ -24,9 +24,9 @@ MonoBehaviour:
   CarriageCoatDoubleDip: {fileID: 21300000, guid: ac65b7eb9c73b4e89912f093d03b26d5,
     type: 3}
   CarriageCoatSwap: {fileID: 21300000, guid: 8d45617bb5fbf40308979350d4d3cc9d, type: 3}
-  CarriageAttachedRed: {fileID: 21300000, guid: db75921f7c47a6241b1d491818077006,
+  CarriageAttachedRed: {fileID: 21300000, guid: 02e85e2cc1eae4dee8dabb97e62c149a,
     type: 3}
-  CarriageAttachedGreen: {fileID: 21300000, guid: 1f6a816dfc5f1f145aff9f1e7ab258a9,
+  CarriageAttachedGreen: {fileID: 21300000, guid: fc397333c06ae4ce198a20e6171ee144,
     type: 3}
-  CarriageAttachedBlue: {fileID: 21300000, guid: f080cfa55868b764cb20f5ffb1773460,
+  CarriageAttachedBlue: {fileID: 21300000, guid: 89c86e8c73310419cb2e21b63acda048,
     type: 3}
