@@ -21,6 +21,9 @@ public class MatchOutcomeController : MonoBehaviour
 
         bool p1wins = outcome == p1Dom;
 
+        if (outcome == Color.None)
+            p1wins = true;
+
         OnMatchOutcomeDecided?.Invoke(p1wins);
         return;
     }

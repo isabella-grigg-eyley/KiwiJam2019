@@ -173,11 +173,11 @@ public class GameScript : MonoBehaviour
 
 		if (p1wins)
 		{
-			m_player2.GainPoint();
+			m_player1.GainPoint();
 		}
 		else
 		{
-			m_player1.GainPoint();
+			m_player2.GainPoint();
 		}
 
 		// Fill all points for player 1
@@ -311,7 +311,7 @@ public class GameScript : MonoBehaviour
 		{
 			return;
 		}
-		
+
 		if (m_player1.CarriageCount == 3)
 		{
 			m_player1Turn = false;
