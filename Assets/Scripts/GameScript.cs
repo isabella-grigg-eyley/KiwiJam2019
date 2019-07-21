@@ -173,11 +173,11 @@ public class GameScript : MonoBehaviour
 
 		if (p1wins)
 		{
-			m_player2.GainPoint();
+			m_player1.GainPoint();
 		}
 		else
 		{
-			m_player1.GainPoint();
+			m_player2.GainPoint();
 		}
 
 		// Fill all points for player 1
@@ -213,7 +213,7 @@ public class GameScript : MonoBehaviour
 		m_winnerText.DOFade(1, 0.35f);
 		m_winnerText.rectTransform.DOScale(Vector3.zero, 2).From().SetEase(Ease.OutBack).OnComplete(() =>
 		{
-			
+
 			FMODUnity.RuntimeManager.PlayOneShot("event:/Character/Attack");
 
 			m_winnerText.DOFade(0, 0.15f).SetDelay(1f).OnComplete(() =>
@@ -309,7 +309,7 @@ public class GameScript : MonoBehaviour
 		{
 			return;
 		}
-		
+
 		if (m_player1.CarriageCount == 3)
 		{
 			m_player1Turn = false;
