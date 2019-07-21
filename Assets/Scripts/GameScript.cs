@@ -130,6 +130,11 @@ public class GameScript : MonoBehaviour
 		{
 			NextTurn();
 		}
+
+		if (ReadyToFight)
+		{
+			OnReadyToFight?.Invoke(m_player1, m_player2);
+		}
 	}
 
 	private Carriage CreateCarriage(CarriageDefinition def)
@@ -248,10 +253,6 @@ public class GameScript : MonoBehaviour
 
 	private void NextTurn()
 	{
-		if (ReadyToFight)
-		{
-			OnReadyToFight?.Invoke(m_player1, m_player2);
-		}
 		m_player1Turn = !m_player1Turn;
 
 		TurnStart();
